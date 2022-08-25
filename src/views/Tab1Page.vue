@@ -22,6 +22,9 @@
       <filter-list />
       <cover-heading />
       <text-heading title="Hi! How's it going?" />
+      <paragraph-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+      <speech-bubble-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+      <shelf-list />
     </ion-content>
     <circle-button vertical="bottom" horizontal="end" />
   </ion-page>
@@ -41,6 +44,9 @@ import TextField from '@/components/Fields/TextField.vue';
 import FilterList from '@/components/Filter/FilterList.vue';
 import CoverHeading from '@/components/Headings/CoverHeading.vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
+import ParagraphText from '@/components/Text/ParagraphText.vue';
+import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
+import ShelfList from '@/components/Lists/ShelfList.vue';
 
 export default  defineComponent({
   name: 'Tab1Page',
@@ -60,7 +66,12 @@ export default  defineComponent({
     TextField,
     FilterList,
     CoverHeading,
-    TextHeading
+    TextHeading,
+    ParagraphText,
+    SpeechBubbleText,
+    ShelfList
   }
 });
 </script>
+,
+    SpeechBubbleText
