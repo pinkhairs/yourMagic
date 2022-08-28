@@ -11,17 +11,30 @@
             <ion-title size="large">Components</ion-title>
         </ion-toolbar>
       </ion-header>
+      <ion-list>
+        <item-block :clickable="false">
+          <cover-heading />
+        </item-block>
+        <item-block :clickable="true">
+          <fake-door-button />
+        </item-block>
+        <item-block :clickable="true">
+          <article-block />
+        </item-block>
+        <item-block :clickable="true">
+          <article-block />
+        </item-block>
+        <item-block :clickable="false">
+          <text-heading title="Hi! How's it going?" />
+        </item-block>
+      </ion-list>
     
-      <article-block />
-      <spread-block />
+      <spread-block cards="Hi!" />
       <text-button width="block" />
-      <fake-door-button />
       <calendar-month />
       <card-container :flipped="true" />
       <text-field />
       <filter-list />
-      <cover-heading />
-      <text-heading title="Hi! How's it going?" />
       <paragraph-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
       <speech-bubble-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
       <shelf-list />
@@ -32,7 +45,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem } from '@ionic/vue';
 import ArticleBlock from '@/components/Blocks/ArticleBlock.vue';
 import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
 import CircleButton from '@/components/Buttons/CircleButton.vue';
@@ -47,6 +60,7 @@ import TextHeading from '@/components/Headings/TextHeading.vue';
 import ParagraphText from '@/components/Text/ParagraphText.vue';
 import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import ShelfList from '@/components/Lists/ShelfList.vue';
+import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 
 export default  defineComponent({
   name: 'Tab1Page',
@@ -69,9 +83,8 @@ export default  defineComponent({
     TextHeading,
     ParagraphText,
     SpeechBubbleText,
-    ShelfList
+    ShelfList,
+    ItemBlock
   }
 });
 </script>
-,
-    SpeechBubbleText

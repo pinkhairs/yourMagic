@@ -1,8 +1,8 @@
 <template>
   <block-component
-    subtitle="New Moon in Virgo"
-    title="Leo sun tarostrology"
-    img="placeholder.png"
+    title="Double Time"
+    description="Constrasting factors"
+    :cards="cards"
   ></block-component>
 </template>
 
@@ -12,6 +12,6 @@ import BlockComponent from '@/components/Blocks/BlockComponent.vue';
 
 export default defineComponent({
   components: { BlockComponent },
-  props: ['subtitle', 'title', 'content', 'img']
+  props: ['subtitle', 'title', 'content', 'img', 'cards'],
 });
 </script>

@@ -1,37 +1,41 @@
 <template>
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col :size="img ? 7 : 12">
-          <ion-card-header>
-            <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
-            <ion-card-title>{{title}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content v-if="content">
-            {{content}}
-          </ion-card-content>
-        </ion-col>
-        <ion-col size="5" v-if="img">
-          <div>
-            <ion-img :src="imgSrc"></ion-img>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" v-if="cards">
+        <div>
+          x{{cards}}x
+        </div>
+      </ion-col>
+      <ion-col :size="img || cards ? 8 : 12">
+        <ion-item-header>
+          <ion-item-subtitle>{{subtitle}}</ion-item-subtitle>
+          <ion-item-title>{{title}}</ion-item-title>
+          {{description}}
+        </ion-item-header>
+        <ion-item-content v-if="content">
+          {{content}}
+        </ion-item-content>
+      </ion-col>
+      <ion-col size="4" v-if="img">
+        <div>
+          <ion-img :src="imgSrc"></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </template>
 
 <script>
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg } from '@ionic/vue';
+import {  IonItemContent, IonItemHeader, IonItemSubtitle, IonItemTitle, IonImg } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg },
-  props: ['subtitle', 'title', 'content', 'img'],
+  components: { IonItemContent, IonItemHeader, IonItemSubtitle, IonItemTitle, IonImg },
+  props: ['subtitle', 'title', 'content', 'img', 'cards', 'description'],
   computed: {
     imgSrc() {
       return require(`@/assets/images/${this.img}`);
     }
-  }
+  },
 });
 </script>
