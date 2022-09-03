@@ -12,19 +12,19 @@
         </ion-toolbar>
       </ion-header>
       <ion-list>
-        <item-block :clickable="false">
+        <item-block>
           <cover-heading />
         </item-block>
-        <item-block :clickable="true">
+        <item-block>
           <fake-door-button />
         </item-block>
-        <item-block :clickable="true">
+        <item-block>
           <article-block />
         </item-block>
-        <item-block :clickable="true">
+        <item-block>
           <article-block />
         </item-block>
-        <item-block :clickable="false">
+        <item-block>
           <text-heading title="Hi! How's it going?" />
         </item-block>
       </ion-list>

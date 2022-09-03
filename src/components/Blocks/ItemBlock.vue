@@ -1,5 +1,5 @@
 <template>
-  <ion-item :lines="clickable ? 'full' : 'none'">
+  <ion-item>
     <ion-item-header>
       <ion-item-subtitle>{{subtitle}}</ion-item-subtitle>
       <ion-item-title>{{title}}</ion-item-title>
@@ -15,6 +15,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   components: { IonItem, IonItemHeader, IonItemSubtitle, IonItemTitle },
-  props: ['cilckable', 'subtitle', 'title', 'description'],
+  props: ['subtitle', 'title', 'description'],
 })
 </script>
