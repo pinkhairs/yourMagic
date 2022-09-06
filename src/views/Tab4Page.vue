@@ -3,12 +3,10 @@
     <ion-content :fullscreen="true">
       <ion-list>
         <item-block>
-          <text-heading title="Library" />
+          <text-heading title="More" />
         </item-block>
-        <speech-bubble-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-        <item-block router-link="/content" title="One two three" />
-        <item-block router-link="/content" title="Question #2" />
-        <item-block router-link="/content" title="Tarot question" />
+        <item-block router-link="/journal" title="Journal" />
+        <item-block router-link="/search" title="Search" />
       </ion-list>
     </ion-content>
   </ion-page>
@@ -18,16 +16,14 @@
 import { defineComponent } from 'vue';
 import { IonPage, IonContent, } from '@ionic/vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
-import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 
 export default  defineComponent({
-  name: 'Tab2Page',
+  name: 'Tab4Page',
   components: {
     IonContent,
     IonPage,
     TextHeading,
-    SpeechBubbleText,
     ItemBlock
   }
 });

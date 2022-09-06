@@ -1,5 +1,5 @@
 <template>
-  <ion-button :expand="width">Text</ion-button>
+  <ion-button :expand="width">{{text}}</ion-button>
 </template>
 
 <script>
@@ -8,6 +8,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: { IonButton },
-  props: [ 'width' ]
+  props: [ 'width', 'text' ]
 });
 </script>

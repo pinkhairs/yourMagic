@@ -3,19 +3,20 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="tab1" href="/tabs/tab1">
-          <ion-icon :icon="triangle" />
-          <ion-label>Tab 1</ion-label>
+        <ion-tab-button tab="tab-1" href="/tabs/tab-1">
+          <ion-icon :icon="star" />
         </ion-tab-button>
           
-        <ion-tab-button tab="tab2" href="/tabs/tab2">
-          <ion-icon :icon="ellipse" />
-          <ion-label>Tab 2</ion-label>
+        <ion-tab-button tab="tab-2" href="/tabs/tab-2">
+          <ion-icon :icon="book" />
         </ion-tab-button>
         
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
+        <ion-tab-button tab="tab-3" href="/tabs/tab-3">
           <ion-icon :icon="square" />
-          <ion-label>Tab 3</ion-label>
+        </ion-tab-button>
+        
+        <ion-tab-button tab="tab-4" href="/tabs/tab-4">
+          <ion-icon :icon="list" />
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -24,17 +25,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
+import { square, book, list, star } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'TabsPage',
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
+  components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     return {
-      ellipse, 
       square, 
-      triangle,
+      book, 
+      list,
+      star
     }
   }
 });
