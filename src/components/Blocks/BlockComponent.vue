@@ -3,14 +3,14 @@
     <ion-row>
       <ion-col size="4" v-if="cards">
         <div>
-          x{{cards}}x
+          {{cards}}
         </div>
       </ion-col>
       <ion-col :size="img || cards ? 8 : 12">
         <ion-item-header>
-          <ion-item-subtitle>{{subtitle}}</ion-item-subtitle>
-          <ion-item-title>{{title}}</ion-item-title>
-          {{description}}
+          <text-heading :level="3" v-if="subtitle">{{subtitle}}</text-heading>
+          <text-heading :level="2" v-if="title">{{title}}</text-heading>
+          <div v-if="description">{{description}}</div>
         </ion-item-header>
         <ion-item-content v-if="content">
           {{content}}
@@ -18,7 +18,7 @@
       </ion-col>
       <ion-col size="4" v-if="img">
         <div>
-          <ion-img :src="imgSrc"></ion-img>
+          <image-media :src="img" alt=""></image-media>
         </div>
       </ion-col>
     </ion-row>
@@ -26,16 +26,19 @@
 </template>
 
 <script>
-import {  IonItemContent, IonItemHeader, IonItemSubtitle, IonItemTitle, IonImg } from '@ionic/vue';
+import {  IonItemContent, IonItemHeader } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import ImageMedia from '../Media/ImageMedia.vue';
+import TextHeading from '../Headings/TextHeading.vue';
 
 export default defineComponent({
-  components: { IonItemContent, IonItemHeader, IonItemSubtitle, IonItemTitle, IonImg },
-  props: ['subtitle', 'title', 'content', 'img', 'cards', 'description'],
-  computed: {
-    imgSrc() {
-      return require(`@/assets/images/${this.img}`);
-    }
-  },
+  components: { IonItemContent, IonItemHeader, ImageMedia, TextHeading },
+  props: ['subtitle', 'title', 'content', 'img', 'cards', 'description']
 });
 </script>
+
+<style scoped>
+ion-grid {
+  --ion-grid-width: 100%;
+}
+</style>

@@ -2,13 +2,16 @@
   <your-magic-page>
     <stack-list>
       <item-block>
-        <cover-heading />
+        <cover-heading>Good afternoon, Amí</cover-heading>
       </item-block>
-      <item-block title="Get a reading" link="/new-reading">
+      <item-block :background="true" title="Get a reading" link="/new-reading">
         <fake-door-button />
       </item-block>
-      <item-block router-link="/content">
-        <article-block />
+      <item-block :background="true" link="/content">
+        <article-block title="The Hermit" subtitle="Card of the day" content="For the card of the day today we drew The Hermit." img="hermit.png" />
+      </item-block>
+      <item-block :background="true" link="/content">
+        <article-block title="Virgo New Moon!" subtitle="Tarostrology" content="What do you want to write here? 🌝" img="virgo.png" />
       </item-block>
       <item-block router-link="/content">
         <article-block />

@@ -1,9 +1,9 @@
 <template>
   <block-component
-    subtitle="Card of the Day"
-    title="The Hermit"
-    content="For the collective consciousness, we pulled The Hermit."
-    img="hermit.png"
+    :subtitle="subtitle"
+    :title="title"
+    :content="content"
+    :img="img"
   ></block-component>
 </template>
 
@@ -12,6 +12,7 @@ import { defineComponent } from 'vue';
 import BlockComponent from '@/components/Blocks/BlockComponent.vue';
 
 export default defineComponent({
-  components: { BlockComponent }
+  components: { BlockComponent },
+  props: ['subtitle', 'title', 'content', 'img']
 });
 </script>
