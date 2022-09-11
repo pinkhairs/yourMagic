@@ -1,16 +1,20 @@
 <template>
   <ion-list>
-    <ion-item>1</ion-item>
-    <ion-item>2</ion-item>
-    <ion-item>3</ion-item>
+    <slot></slot>
   </ion-list>
 </template>
 
 <script>
-import { IonList, IonItem } from '@ionic/vue';
+import { IonList } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { IonList, IonItem },
+  components: { IonList },
 });
 </script>
+
+<style scoped>
+ion-list {
+  --ion-item-background: none;
+}
+</style>

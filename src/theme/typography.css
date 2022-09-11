@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Alegreya';
+  src: url('@/assets/fonts/Alegreya-BlackItalic.woff2') format('woff2'),
+      url('@/assets/fonts/Alegreya-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Eczar';
+  src: url('@/assets/fonts/Eczar-Regular.woff2') format('woff2'),
+      url('@/assets/fonts/Eczar-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  --ion-font-family: Eczar, Times, serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+  font-family: Alegreya, Georgia, serif;
+  font-weight: 900;
+  font-style: italic;
+}
