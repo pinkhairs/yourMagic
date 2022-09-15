@@ -5,9 +5,9 @@
     :class="{link, background}">
     <div class="item-native"></div>
     <ion-label position="stacked" v-if="title || subtitle || description">
-      <text-heading :level="3" v-if="subtitle">{{subtitle}}</text-heading>
-      <text-heading :level="2" v-if="title">{{title}}</text-heading>
-      <div v-if="description">{{description}}</div>
+      <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
+      <text-heading :level="1" v-if="title">{{title}}</text-heading>
+      <div class="description" v-if="description">{{description}}</div>
     </ion-label>
     <div class="spacer"></div>
     <slot />
@@ -47,5 +47,8 @@ ion-item {
 }
 .spacer {
   height: 10px;
+}
+.description {
+  font-size: 17px;
 }
 </style>

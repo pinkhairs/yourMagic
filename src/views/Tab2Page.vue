@@ -1,34 +1,41 @@
 <template>
-  <ion-page>
-    <ion-content :fullscreen="true">
-      <ion-list>
-        <item-block>
-          <text-heading title="Library" />
-        </item-block>
-        <speech-bubble-text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-        <item-block router-link="/content" title="One two three" />
-        <item-block router-link="/content" title="Question #2" />
-        <item-block router-link="/content" title="Tarot question" />
-      </ion-list>
-    </ion-content>
-  </ion-page>
+  <your-magic-page :time="time">
+    <stack-list>
+      <item-block router-link="/content" title="Library">
+      </item-block>
+      <item-block :background="true" link="/new-reading" subtitle="One two three" />
+      <item-block :background="true" link="/new-reading" subtitle="Question #2" />
+      <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+    </stack-list>
+  </your-magic-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonContent, } from '@ionic/vue';
-import TextHeading from '@/components/Headings/TextHeading.vue';
-import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
+import YourMagicPage from '../components/Page/YourMagicPage.vue';
+import StackList from '../components/Lists/StackList.vue';
 
 export default  defineComponent({
-  name: 'Tab2Page',
+  name: 'Tab1Page',
+  data() {
+    return {
+      time: 'afternoon'
+    }
+  },
   components: {
-    IonContent,
-    IonPage,
-    TextHeading,
-    SpeechBubbleText,
-    ItemBlock
-  }
+    ItemBlock,
+    YourMagicPage,
+    StackList
+}
 });
 </script>
+
+<style scoped>
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+</style>

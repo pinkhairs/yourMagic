@@ -1,14 +1,14 @@
 <template>
-  <your-magic-page>
+  <your-magic-page :time="time">
     <div class="top-buttons">
       <circle-button icon="cog.png" />
       <circle-button icon="bell.png" :alert="true" />
     </div>
     <stack-list>
       <item-block>
-        <cover-heading time="morning" name="Bartholomew" />
+        <cover-heading :time="time" name="Bartholomew" />
       </item-block>
-      <item-block :background="true" title="Get a reading" link="/new-reading">
+      <item-block :background="true" subtitle="Get a reading" link="/new-reading">
         <fake-door-button />
       </item-block>
       <item-block :background="true" link="/content">
@@ -17,12 +17,12 @@
       <item-block :background="true" link="/content">
         <article-block title="Virgo New Moon!" subtitle="Tarostrology" content="What do you want to write here? 🌝" img="virgo.png" />
       </item-block>
-      <item-block router-link="/content" title="Prompts for Leo season">
+      <item-block router-link="/content" subtitle="Prompts for Leo season">
         <speech-bubble-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</speech-bubble-text>
       </item-block>
-      <item-block :background="true" link="/new-reading" subtitle="One two three" />
-      <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-      <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+      <item-block :background="true" link="/new-reading" description="One two three" />
+      <item-block :background="true" link="/new-reading" description="Question #2" />
+      <item-block :background="true" link="/new-reading" description="Tarot question" />
     </stack-list>
   </your-magic-page>
 </template>
@@ -40,6 +40,11 @@ import CircleButton from '../components/Buttons/CircleButton.vue';
 
 export default  defineComponent({
   name: 'Tab1Page',
+  data() {
+    return {
+      time: 'afternoon'
+    }
+  },
   components: {
     FakeDoorButton,
     ArticleBlock,

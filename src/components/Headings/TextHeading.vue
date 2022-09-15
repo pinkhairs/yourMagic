@@ -19,6 +19,9 @@ h1, h2, h3, h4 {
   margin-top: 0;
   padding-top: 0;
 }
+h1 {
+  font-size: 50px;
+}
 h2 {
   font-size: 26px;
 }

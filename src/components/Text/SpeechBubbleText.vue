@@ -18,5 +18,6 @@ export default defineComponent({
   border-radius: 30px 30px 0 30px;
   font-size: 16px;
   line-height: 1.5;
+  color: #000;
 }
 </style>

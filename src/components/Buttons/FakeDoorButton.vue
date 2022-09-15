@@ -23,6 +23,7 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
   width: 99%;
+  color: #000;
 }
 .prompt {
   width: 80%;
