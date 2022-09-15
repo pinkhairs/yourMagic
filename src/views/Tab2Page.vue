@@ -1,8 +1,7 @@
 <template>
   <your-magic-page :time="time">
     <stack-list>
-      <item-block router-link="/content" title="Library">
-      </item-block>
+      <item-block router-link="/content" title="Library" />
       <item-block :background="true" link="/new-reading" subtitle="One two three" />
       <item-block :background="true" link="/new-reading" subtitle="Question #2" />
       <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
@@ -17,7 +16,7 @@ import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
 
 export default  defineComponent({
-  name: 'Tab1Page',
+  name: 'Tab2Page',
   data() {
     return {
       time: 'morning'

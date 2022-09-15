@@ -1,93 +1,40 @@
 <template>
-  <ion-page>
-    <ion-content :fullscreen="true">
-      <ion-list>
-        <item-block>
-          <text-heading title="Decks" />
-        </item-block>
-        <item-block>
-          <text-heading title="Your decks" />
-          <text-button slot="end" router-link="/new-deck" text="Add new" />
-        </item-block>
-        <ion-slides :options="sliderOptions">
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-        </ion-slides>
-        <item-block>
-          <text-heading title="Shop" />
-        </item-block>
-        <ion-slides :options="sliderOptions">
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-          <ion-slide router-link="/deck">
-            <ion-img src="https://via.placeholder.com/250x400" />
-          </ion-slide>
-        </ion-slides>
-      </ion-list>
-    </ion-content>
-  </ion-page>
+  <your-magic-page :time="time">
+    <stack-list>
+      <item-block router-link="/content" title="Library" />
+      <item-block :background="true" link="/new-reading" subtitle="One two three" />
+      <item-block :background="true" link="/new-reading" subtitle="Question #2" />
+      <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+    </stack-list>
+  </your-magic-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonContent, IonSlides, IonSlide } from '@ionic/vue';
-import TextHeading from '@/components/Headings/TextHeading.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
-import TextButton from '@/components/Buttons/TextButton.vue';
+import YourMagicPage from '../components/Page/YourMagicPage.vue';
+import StackList from '../components/Lists/StackList.vue';
 
 export default  defineComponent({
   name: 'Tab3Page',
   data() {
     return {
-      sliderOptions: {
-        slidesPerView: 2.75,
-        speed: 66
-      }
+      time: 'evening'
     }
   },
   components: {
-    IonContent,
-    IonPage,
-    TextHeading,
     ItemBlock,
-    IonSlides,
-    IonSlide,
-    TextButton
-  }
+    YourMagicPage,
+    StackList
+}
 });
 </script>
+
+<style scoped>
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+</style>
