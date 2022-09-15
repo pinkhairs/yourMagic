@@ -16,13 +16,13 @@ export default defineComponent({
 
 <style scoped>
 .fake-door {
-  padding: 3px 5px 3px 15px;
+  padding: 1px 5px 0 15px;
   background: rgba(255,255,255,.7);
   border: 2px #000 solid;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
+  width: 99%;
 }
 .prompt {
   width: 80%;

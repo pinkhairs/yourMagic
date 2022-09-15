@@ -1,8 +1,8 @@
 <template>
   <ion-item
-    :lines="clickable ? 'full' : 'none'"
+    :lines="link ? 'full' : 'none'"
     :router-link="link ? link : null"
-    :class="{clickable, background}">
+    :class="{link, background}">
     <div class="item-native"></div>
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="3" v-if="subtitle">{{subtitle}}</text-heading>
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.clickable {
+.link {
   --border-width: 2px 0;
   --border-color: #000;
   margin-bottom: -2px;

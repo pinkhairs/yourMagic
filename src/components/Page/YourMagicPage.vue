@@ -17,6 +17,7 @@ export default defineComponent({
 
 <style>
 ion-content {
+  --color: #000;
   --background: linear-gradient(360deg, #F6A904 0%, #FF92E1 100%);
 }
 </style>
