@@ -9,6 +9,7 @@
       <text-heading :level="2" v-if="title">{{title}}</text-heading>
       <div v-if="description">{{description}}</div>
     </ion-label>
+    <div class="spacer"></div>
     <slot />
   </ion-item>
 </template>
@@ -37,11 +38,14 @@ export default defineComponent({
 }
 ion-item {
   --inner-padding-top: 0.5em;
-  --inner-padding-bottom: 1.25em;
+  --inner-padding-bottom: 1em;
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
 }
 .background {
   --ion-item-background: rgba(86, 0, 232, 0.3);
+}
+.spacer {
+  height: 10px;
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
   <your-magic-page>
+    <div class="top-buttons">
+      <circle-button icon="cog.png" />
+      <circle-button icon="bell.png" :alert="true" />
+    </div>
     <stack-list>
       <item-block>
         <cover-heading time="morning" name="Bartholomew" />
@@ -32,6 +36,7 @@ import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
+import CircleButton from '../components/Buttons/CircleButton.vue';
 
 export default  defineComponent({
   name: 'Tab1Page',
@@ -42,7 +47,17 @@ export default  defineComponent({
     SpeechBubbleText,
     ItemBlock,
     YourMagicPage,
-    StackList
-  }
+    StackList,
+    CircleButton
+}
 });
 </script>
+
+<style scoped>
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+</style>

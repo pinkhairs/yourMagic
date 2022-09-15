@@ -15,7 +15,7 @@ export default defineComponent({
 .speech-bubble-text {
   padding: 15px 20px;
   background: #fff;
-  border-radius: 20px 20px 0 20px;
+  border-radius: 30px 30px 0 30px;
   font-size: 16px;
   line-height: 1.5;
 }

@@ -25,7 +25,4 @@ h2 {
 h3 {
   font-size: 19px;
 }
-h2 + h3, h3 + h2, h3 + h4, h4 + h3 {
-  margin-top: -10px;
-}
 </style>

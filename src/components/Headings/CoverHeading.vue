@@ -19,6 +19,8 @@ export default defineComponent({
 <style scoped>
 h1 {
   vertical-align: middle;
+  margin-top: 0;
+  padding-top: 0;
   font-size: 3.75rem;
 }
 .offset {
