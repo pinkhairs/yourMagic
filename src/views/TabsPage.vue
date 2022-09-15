@@ -12,11 +12,11 @@
         </ion-tab-button>
         
         <ion-tab-button tab="tab-3" href="/tabs/tab-3">
-          <ion-icon :icon="square" />
+          <ion-icon :icon="calendarClear" />
         </ion-tab-button>
         
         <ion-tab-button tab="tab-4" href="/tabs/tab-4">
-          <ion-icon :icon="list" />
+          <ion-icon :icon="search" />
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -26,17 +26,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { square, book, list, star } from 'ionicons/icons';
+import { star, book, calendarClear, search } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'TabsPage',
   components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     return {
-      square, 
+      star, 
       book, 
-      list,
-      star
+      calendarClear,
+      search
     }
   }
 });

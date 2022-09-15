@@ -20,7 +20,7 @@ export default  defineComponent({
   name: 'Tab1Page',
   data() {
     return {
-      time: 'afternoon'
+      time: 'morning'
     }
   },
   components: {

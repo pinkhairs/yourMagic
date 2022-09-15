@@ -28,7 +28,9 @@ export default defineComponent({
   --background: linear-gradient(180deg, #5600E8 0%, #FF92E1 100%);
 }
 .evening ion-content {
-  --color: #000;
-  --background: linear-gradient(360deg, #F6A904 0%, #FF92E1 100%);
+  --color: #fff;
+  --ion-item-color: #fff;
+  --ion-text-color: #fff;
+  --background: #000;
 }
 </style>
