@@ -15,8 +15,7 @@ export default defineComponent({
 
 <style scoped>
 h1, h2, h3, h4 {
-  padding-bottom: 10px;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-top: 0;
   padding-top: 0;
 }

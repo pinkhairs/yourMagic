@@ -35,7 +35,7 @@ export default defineComponent({
 .block-component {
   padding: 5px 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 15px;
 }

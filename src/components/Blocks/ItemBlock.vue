@@ -37,7 +37,7 @@ export default defineComponent({
 }
 ion-item {
   --inner-padding-top: 0.5em;
-  --inner-padding-bottom: 1.5em;
+  --inner-padding-bottom: 1.25em;
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
 }
