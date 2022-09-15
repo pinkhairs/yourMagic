@@ -19,7 +19,7 @@ export default defineComponent({
 <style scoped>
 h1 {
   vertical-align: middle;
-  margin-top: 0;
+  margin-top: -15px;
   padding-top: 0;
   font-size: 3.75rem;
 }

@@ -41,3 +41,18 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+ion-tab-bar {
+  --background: rgba(255,146,225,.95);
+  --color: #000;
+  --border: 2px solid #000;
+  --color-selected: #000;
+}
+ion-tab-button {
+  outline: 2px #000 solid;
+}
+ion-tab-button.tab-selected {
+  --background: rgba(246,169,4,.95);
+}
+</style>
