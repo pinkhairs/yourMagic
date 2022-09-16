@@ -19,5 +19,9 @@ export default defineComponent({
   font-size: 16px;
   line-height: 1.5;
   color: #000;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 15px 0 10px;
 }
 </style>

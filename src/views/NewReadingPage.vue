@@ -1,42 +1,65 @@
 <template>
-  <ion-page>
-    <ion-content :fullscreen="true">
-      <text-button @click="() => router.back()" text="Back"></text-button>
-      <text-heading title="New reading" :level="1"></text-heading>
-      <text-field />
-      <text-heading :level="3" title="Then choose a spread"></text-heading>
-      <text-heading :level="2" title="Spreads"></text-heading>
-      <ion-list>
-        <item-block @click="() => router.push('/shuffle')">
-          <spread-block></spread-block>
-        </item-block>
-      </ion-list>
-    </ion-content>
-  </ion-page>
+  <your-magic-page :time="time">
+    <item-block>
+      <circle-button @click="() => router.back()" icon="back.png" />
+    </item-block>
+    <item-block title="New reading" description="First, type your question." />
+    <item-block lines="full" :form="true" :background="true">
+      <text-field :autofocus="true" />
+    </item-block>
+    <item-block description="Then, choose a spread." />
+    <div class="spacer-1"></div>
+    <item-block title="Spreads" />
+    <div class="spacer-2"></div>
+    <item-block>
+      <speech-bubble-text>For love & relationships.</speech-bubble-text>
+    </item-block>
+    <item-block link="/shuffle" :background="true">
+      <spread-block />
+    </item-block>
+    <item-block link="/shuffle" :background="true">
+      <spread-block />
+    </item-block>
+    <item-block>
+      <speech-bubble-text>For career, work &amp; ambition.</speech-bubble-text>
+    </item-block>
+    <item-block link="/shuffle" :background="true">
+      <spread-block />
+    </item-block>
+    <item-block link="/shuffle" :background="true">
+      <spread-block />
+    </item-block>
+    <item-block link="/shuffle" :background="true">
+      <spread-block />
+    </item-block>
+  </your-magic-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonContent, IonList } from '@ionic/vue';
-import TextHeading from '@/components/Headings/TextHeading.vue';
 import TextField from '@/components/Fields/TextField.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
-import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
-import TextButton from '@/components/Buttons/TextButton.vue';
+import YourMagicPage from '@/components/Page/YourMagicPage.vue';
+import CircleButton from '@/components/Buttons/CircleButton.vue';
 import { useRouter } from 'vue-router';
+import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
+import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
 
 export default  defineComponent({
   name: 'NewReadingPage',
+  data() {
+    return {
+      time: 'afternoon'
+    }
+  },
   components: {
-    IonContent,
-    IonPage,
-    IonList,
-    TextHeading,
     TextField,
     ItemBlock,
-    SpreadBlock,
-    TextButton
-  },
+    YourMagicPage,
+    CircleButton,
+    SpeechBubbleText,
+    SpreadBlock
+},
   setup() {
     const router = useRouter();
     return { router };
@@ -44,4 +67,11 @@ export default  defineComponent({
 });
 </script>
 
-    
+<style scoped>
+.spacer-1 {
+  margin-top: -40px;
+}
+.spacer-2 {
+  margin-top: -30px;
+}
+</style>

@@ -4,7 +4,6 @@
     :lines="link ? 'full' : 'none'"
     :router-link="link ? link : null"
     :class="{link, background}">
-    <div class="item-native"></div>
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
       <text-heading :level="1" v-if="title">{{title}}</text-heading>
@@ -15,9 +14,8 @@
   </ion-item>
   <ion-item
     v-else
-    :lines="link ? 'full' : 'none'"
-    :class="{link, background}">
-    <div class="item-native"></div>
+    :lines="'none'"
+    :class="{lines, background, form}">
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
       <text-heading :level="1" v-if="title">{{title}}</text-heading>
@@ -35,7 +33,7 @@ import TextHeading from '../Headings/TextHeading.vue';
 
 export default defineComponent({
   components: { IonItem, IonLabel, TextHeading },
-  props: ['subtitle', 'title', 'description', 'link', 'background'],
+  props: ['subtitle', 'title', 'description', 'link', 'background', 'lines', 'form'],
   computed: {
     clickable() {
       return this.link ? true : false;
@@ -56,13 +54,32 @@ ion-item {
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
 }
-.background {
+ion-item:not(.background) {
+  --background: none;
+}
+ion-item.background {
   --ion-item-background: rgba(86, 0, 232, 0.3);
+}
+ion-item.background.form {
+  --ion-item-background: rgba(255, 255, 255, 0.7);
 }
 .spacer {
   height: 10px;
 }
 .description {
   font-size: 18px;
+}
+.lines {
+  --border-width: 2px 0;
+  --border-color: #000;
+  margin-bottom: -2px;
+  --box-shadow: none;
+}
+.lines:last-child {
+  margin-bottom: 0;
+}
+.lines .item-inner {
+  --border-color: rgba(0,0,0,0) !important;
+  --border-style: none !important;
 }
 </style>
