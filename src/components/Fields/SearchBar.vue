@@ -18,5 +18,6 @@ export default defineComponent({
   background: rgba(255,255,255,.7);
   border: 2px solid #000;
   padding: 10px 20px;
+  width: 100%;
 }
 </style>
