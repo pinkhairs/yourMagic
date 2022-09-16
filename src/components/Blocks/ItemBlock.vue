@@ -1,7 +1,21 @@
 <template>
   <ion-item
+    v-if="link"
     :lines="link ? 'full' : 'none'"
     :router-link="link ? link : null"
+    :class="{link, background}">
+    <div class="item-native"></div>
+    <ion-label position="stacked" v-if="title || subtitle || description">
+      <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
+      <text-heading :level="1" v-if="title">{{title}}</text-heading>
+      <div class="description" v-if="description">{{description}}</div>
+    </ion-label>
+    <div class="spacer"></div>
+    <slot />
+  </ion-item>
+  <ion-item
+    v-else
+    :lines="link ? 'full' : 'none'"
     :class="{link, background}">
     <div class="item-native"></div>
     <ion-label position="stacked" v-if="title || subtitle || description">
@@ -49,6 +63,6 @@ ion-item {
   height: 10px;
 }
 .description {
-  font-size: 17px;
+  font-size: 18px;
 }
 </style>

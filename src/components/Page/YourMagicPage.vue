@@ -31,6 +31,7 @@ export default defineComponent({
   --color: #fff;
   --ion-item-color: #fff;
   --ion-text-color: #fff;
-  --background: #000;
+  --background: url('@/assets/images/evening.png') no-repeat center center fixed;
+  background-size: cover;
 }
 </style>

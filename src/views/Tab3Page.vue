@@ -1,10 +1,16 @@
 <template>
   <your-magic-page :time="time">
     <stack-list>
-      <item-block router-link="/content" title="Library" />
-      <item-block :background="true" link="/new-reading" subtitle="One two three" />
-      <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-      <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+      <div class="top-row">
+        <item-block title="Journal" />
+        <div class="buttons">
+          <circle-button icon="list.png" />
+          <circle-button icon="hashtag.png" />
+        </div>
+      </div>
+      <item-block>
+        <calendar-month />
+      </item-block>
     </stack-list>
   </your-magic-page>
 </template>
@@ -14,6 +20,8 @@ import { defineComponent } from 'vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
+import CalendarMonth from '../components/Calendar/CalendarMonth.vue';
+import CircleButton from '../components/Buttons/CircleButton.vue';
 
 export default  defineComponent({
   name: 'Tab3Page',
@@ -25,16 +33,25 @@ export default  defineComponent({
   components: {
     ItemBlock,
     YourMagicPage,
-    StackList
+    StackList,
+    CalendarMonth,
+    CircleButton
 }
 });
 </script>
 
 <style scoped>
-.top-buttons {
+.top-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0 20px;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: -15px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: -30px;
 }
 </style>

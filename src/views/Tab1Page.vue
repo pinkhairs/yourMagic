@@ -17,7 +17,7 @@
       <item-block :background="true" link="/content">
         <article-block title="Virgo New Moon!" subtitle="Tarostrology" content="What do you want to write here? 🌝" img="virgo.png" />
       </item-block>
-      <item-block router-link="/content" subtitle="Prompts for Leo season">
+      <item-block subtitle="Prompts for Leo season">
         <speech-bubble-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</speech-bubble-text>
       </item-block>
       <item-block :background="true" link="/new-reading" description="One two three" />
