@@ -1,5 +1,5 @@
 <template>
-  <ion-textarea placeholder="Placeholder text"></ion-textarea>
+  <ion-textarea placeholder="• • •"></ion-textarea>
 </template>
 
 <script>
