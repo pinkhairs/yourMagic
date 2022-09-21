@@ -5,9 +5,9 @@
     </item-block>
     <item-block title="New reading" description="First, type your question." />
     <item-block lines="full" :form="true" :background="true">
-      <text-field :autofocus="true" />
+      <text-field  />
     </item-block>
-    <item-block description="Then, choose a spread." />
+    <item-block description="Now, choose a spread." />
     <div class="spacer-1"></div>
     <item-block title="Spreads" />
     <div class="spacer-2"></div>

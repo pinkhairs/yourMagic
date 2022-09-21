@@ -65,16 +65,8 @@ const routes: Array<RouteRecordRaw> = [
     component: CardMeaningPage
   },
   {
-    path: '/journal',
-    component: JournalPage
-  },
-  {
     path: '/deck',
     component: DeckPage
-  },
-  {
-    path: '/search',
-    component: SearchPage
   },
   {
     path: '/settings',

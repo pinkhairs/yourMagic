@@ -1,8 +1,8 @@
 <template>
   <ion-item
     v-if="link"
-    :lines="link ? 'full' : 'none'"
-    :router-link="link ? link : null"
+  :lines="full"
+    :router-link="link"
     :class="{link, background}">
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
@@ -50,7 +50,7 @@ export default defineComponent({
 }
 ion-item {
   --inner-padding-top: 0.5em;
-  --inner-padding-bottom: 1em;
+  --inner-padding-bottom: 1.25em;
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
 }

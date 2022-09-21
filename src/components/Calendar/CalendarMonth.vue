@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%">
+  <div class="calendar">
     <div class="month-year">
       <text-heading :level="2">Sep</text-heading>
       <text-heading :level="2">2022</text-heading>
@@ -90,6 +90,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.calendar {
+  width: 100%;
+  margin-bottom: 2px;
+}
 .row {
   grid-template-columns: repeat(7, 1fr);
   display: grid;
@@ -97,6 +101,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   width: 99%;
+  margin-bottom: -1px;
 }
 .month-year {
   display: flex;
@@ -107,5 +112,6 @@ export default defineComponent({
 .row > div {
   border: 1px #ccc solid;
   min-height: 100%;
+  margin-right: -1px;
 }
 </style>
