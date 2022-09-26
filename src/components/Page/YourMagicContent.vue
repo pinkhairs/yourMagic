@@ -1,31 +1,31 @@
 <template>
-  <ion-page :class="time">
+  <ion-content :class="time">
     <slot></slot>
-  </ion-page>
+  </ion-content>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { IonPage } from '@ionic/vue';
+import { IonContent } from '@ionic/vue';
 
 export default defineComponent({
-  components: { IonPage },
+  components: { IonContent },
   props: [ 'time' ]
 });
 </script>
 
 <style>
-.morning ion-content {
+ion-content.morning {
   --color: #000;
   --background: linear-gradient(360deg, #F6A904 0%, #FF92E1 100%);
 }
-.afternoon ion-content {
+ion-content.afternoon {
   --color: #fff;
   --ion-item-color: #fff;
   --ion-text-color: #fff;
   --background: linear-gradient(180deg, #5600E8 0%, #FF92E1 100%);
 }
-.evening ion-content {
+ion-content.evening {
   --color: #fff;
   --ion-item-color: #fff;
   --ion-text-color: #fff;

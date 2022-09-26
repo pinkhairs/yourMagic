@@ -4,12 +4,12 @@ http://ionicframework.com/docs/theming/ */
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary: #ff93e2;
+  --ion-color-primary-rgb: 255, 147, 226;
+  --ion-color-primary-contrast: #000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #f26fcf;
+  --ion-color-primary-tint: #ff8ae0;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -74,4 +74,15 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+ion-footer {
+  --background-color: none !important;
+}
+
+ion-footer ion-button {
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  margin-inline: 0;
+  margin: 0;
 }

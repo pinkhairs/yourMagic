@@ -1,37 +1,39 @@
 <template>
   <your-magic-page :time="time">
-    <item-block>
-      <circle-button @click="() => router.back()" icon="back.png" />
-    </item-block>
-    <item-block title="New reading" description="First, type your question." />
-    <item-block lines="full" :form="true" :background="true">
-      <text-field  />
-    </item-block>
-    <item-block description="Now, choose a spread." />
-    <div class="spacer-1"></div>
-    <item-block title="Spreads" />
-    <div class="spacer-2"></div>
-    <item-block>
-      <speech-bubble-text>For love & relationships.</speech-bubble-text>
-    </item-block>
-    <item-block link="/shuffle" :background="true">
-      <spread-block />
-    </item-block>
-    <item-block link="/shuffle" :background="true">
-      <spread-block />
-    </item-block>
-    <item-block>
-      <speech-bubble-text>For career, work &amp; ambition.</speech-bubble-text>
-    </item-block>
-    <item-block link="/shuffle" :background="true">
-      <spread-block />
-    </item-block>
-    <item-block link="/shuffle" :background="true">
-      <spread-block />
-    </item-block>
-    <item-block link="/shuffle" :background="true">
-      <spread-block />
-    </item-block>
+    <your-magic-content>
+      <item-block>
+        <circle-button @click="() => router.back()" icon="back.png" />
+      </item-block>
+      <item-block title="New reading" description="First, type your question." />
+      <item-block lines="full" :form="true" :background="true">
+        <text-field  />
+      </item-block>
+      <item-block description="Now, choose a spread." />
+      <div class="spacer-1"></div>
+      <item-block title="Spreads" />
+      <div class="spacer-2"></div>
+      <item-block>
+        <speech-bubble-text>For love & relationships.</speech-bubble-text>
+      </item-block>
+      <item-block link="/shuffle" :background="true">
+        <spread-block />
+      </item-block>
+      <item-block link="/shuffle" :background="true">
+        <spread-block />
+      </item-block>
+      <item-block>
+        <speech-bubble-text>For career, work &amp; ambition.</speech-bubble-text>
+      </item-block>
+      <item-block link="/shuffle" :background="true">
+        <spread-block />
+      </item-block>
+      <item-block link="/shuffle" :background="true">
+        <spread-block />
+      </item-block>
+      <item-block link="/shuffle" :background="true">
+        <spread-block />
+      </item-block>
+    </your-magic-content>
   </your-magic-page>
 </template>
 
@@ -44,6 +46,7 @@ import CircleButton from '@/components/Buttons/CircleButton.vue';
 import { useRouter } from 'vue-router';
 import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
+import YourMagicContent from '../components/Page/YourMagicContent.vue';
 
 export default  defineComponent({
   name: 'NewReadingPage',
@@ -58,7 +61,8 @@ export default  defineComponent({
     YourMagicPage,
     CircleButton,
     SpeechBubbleText,
-    SpreadBlock
+    SpreadBlock,
+    YourMagicContent
 },
   setup() {
     const router = useRouter();

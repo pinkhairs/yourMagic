@@ -1,12 +1,12 @@
 <template>
-  <img src="mainSrc" :alt="alt" :srcset="retina2x+' 2x,'+retina3x +' 3x'" />
+  <img :class="{center}" src="mainSrc" :alt="alt" :srcset="retina2x+' 2x,'+retina3x +' 3x'" />
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  props: ['src', 'alt', 'width', 'height'],
+  props: ['src', 'alt', 'width', 'height', 'center'],
   computed: {
     mainSrc() {
       return require('@/assets/images/'+this.src);
@@ -22,4 +22,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.center {
+  display: block;
+  margin: 0 auto;
+}
 </style>

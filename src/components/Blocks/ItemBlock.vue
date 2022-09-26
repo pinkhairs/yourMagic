@@ -1,7 +1,7 @@
 <template>
   <ion-item
     v-if="link"
-  :lines="full"
+    :lines="lines ? 'full' : 'none'"
     :router-link="link"
     :class="{link, background}">
     <ion-label position="stacked" v-if="title || subtitle || description">
