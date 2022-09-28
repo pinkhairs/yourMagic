@@ -1,6 +1,6 @@
 <template>
-  <ion-page>
-    <ion-content :fullscreen="true">
+  <your-magic-page>
+    <your-magic-content>
       <text-button @click="() => router.back()" text="Back"></text-button>
       <text-heading title="#1. Text" />
       <paragraph-text content="Example." />
@@ -21,13 +21,13 @@
       <text-heading title="#8. Audio" />
       <audio-media></audio-media>
       <text-button text="Show Transcript" />
-    </ion-content>
-  </ion-page>
+    </your-magic-content>
+  </your-magic-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonContent, IonImg } from '@ionic/vue';
+import { IonImg } from '@ionic/vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
 import ParagraphText from '@/components/Text/ParagraphText.vue';
 import TableList from '@/components/Lists/TableList.vue';
@@ -37,12 +37,12 @@ import CoverHeading from '@/components/Headings/CoverHeading.vue';
 import AudioMedia from '@/components/Media/AudioMedia.vue';
 import GalleryMedia from '@/components/Media/GalleryMedia.vue';
 import { useRouter } from 'vue-router';
+import YourMagicPage from '../components/Page/YourMagicPage.vue';
+import YourMagicContent from '../components/Page/YourMagicContent.vue';
 
 export default  defineComponent({
   name: 'ContentPage',
   components: {
-    IonContent,
-    IonPage,
     IonImg,
     TextHeading,
     ParagraphText,
@@ -51,8 +51,10 @@ export default  defineComponent({
     TextButton,
     CoverHeading,
     AudioMedia,
-    GalleryMedia
-  },
+    GalleryMedia,
+    YourMagicContent,
+    YourMagicPage
+},
   setup() {
     const router = useRouter();
     return { router };

@@ -1,5 +1,5 @@
 <template>
-  <your-magic-page :time="time">
+  <your-magic-page>
     <your-magic-content>
       <div class="top-buttons">
         <circle-button icon="cog.png" />

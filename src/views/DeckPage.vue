@@ -1,6 +1,6 @@
 <template>
-  <ion-page>
-    <ion-content :fullscreen="true">
+  <your-magic-page>
+    <your-magic-content>
       <text-button @click="() => router.back()" text="Back"></text-button>
       <ion-grid>
         <ion-row>
@@ -15,8 +15,8 @@
       <text-heading :level="2" title="About" />
       <paragraph-text content="A sugary deck" />
       <table-list></table-list>
-    </ion-content>
-  </ion-page>
+    </your-magic-content>
+  </your-magic-page>
 </template>
 
 <script>
@@ -24,12 +24,14 @@ import TextButton from '@/components/Buttons/TextButton.vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
 import TableList from '@/components/Lists/TableList.vue';
 import ParagraphText from '@/components/Text/ParagraphText.vue';
-import { IonImg, IonCol, IonRow, IonGrid, IonPage, IonContent } from '@ionic/vue';
+import { IonImg, IonCol, IonRow, IonGrid } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
+import YourMagicPage from '../components/Page/YourMagicPage.vue';
+import YourMagicContent from '../components/Page/YourMagicContent.vue';
 
 export default defineComponent({
-  components: { IonImg, IonCol, IonRow, IonGrid, TextHeading, ParagraphText, TableList, TextButton, IonPage, IonContent },
+  components: { IonImg, IonCol, IonRow, IonGrid, TextHeading, ParagraphText, TableList, TextButton, YourMagicPage, YourMagicContent },
   setup() {
     const router = useRouter();
     return { router };

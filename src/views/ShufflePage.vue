@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonContent, IonFooter } from '@ionic/vue';
+import { IonFooter } from '@ionic/vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
 import TextButton from '@/components/Buttons/TextButton.vue';
 import YourMagicPage from '@/components/Page/YourMagicPage.vue';
@@ -36,7 +36,6 @@ export default  defineComponent({
     };
   },
   components: {
-    IonContent,
     IonFooter,
     TextHeading,
     TextButton,

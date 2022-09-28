@@ -25,12 +25,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
+import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonRouterOutlet } from '@ionic/vue';
 import { star, book, calendarClear, search } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'TabsPage',
-  components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
+  components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet },
   setup() {
     return {
       star, 

@@ -1,11 +1,13 @@
 <template>
   <your-magic-page :time="time">
-    <stack-list>
-      <item-block title="Search">
-        <search-bar placeholder="Search" />
-        <p>e.g. fool, modern tarot, pixie</p>
-      </item-block>
-    </stack-list>
+    <your-magic-content>
+      <stack-list>
+        <item-block title="Search">
+          <search-bar placeholder="Search" />
+          <p>e.g. fool, modern tarot, pixie</p>
+        </item-block>
+      </stack-list>
+    </your-magic-content>
   </your-magic-page>
 </template>
 
@@ -15,6 +17,7 @@ import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import StackList from '@/components/Lists/StackList.vue';
 import SearchBar from '../components/Fields/SearchBar.vue';
+import YourMagicContent from '../components/Page/YourMagicContent.vue';
 
 export default  defineComponent({
   name: 'Tab1Page',
@@ -27,7 +30,8 @@ export default  defineComponent({
     YourMagicPage,
     ItemBlock,
     StackList,
-    SearchBar
+    SearchBar,
+    YourMagicContent
 }
 });
 </script>

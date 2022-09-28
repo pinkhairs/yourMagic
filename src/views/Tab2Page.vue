@@ -1,5 +1,5 @@
 <template>
-  <your-magic-page :time="time">
+  <your-magic-page>
     <stack-list>
       <item-block router-link="/content" title="Library" />
       <item-block :background="true" link="/new-reading" subtitle="One two three" />

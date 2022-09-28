@@ -13,23 +13,3 @@ export default defineComponent({
   props: [ 'time' ]
 });
 </script>
-
-<style>
-.morning ion-content {
-  --color: #000;
-  --background: linear-gradient(360deg, #F6A904 0%, #FF92E1 100%);
-}
-.afternoon ion-content {
-  --color: #fff;
-  --ion-item-color: #fff;
-  --ion-text-color: #fff;
-  --background: linear-gradient(180deg, #5600E8 0%, #FF92E1 100%);
-}
-.evening ion-content {
-  --color: #fff;
-  --ion-item-color: #fff;
-  --ion-text-color: #fff;
-  --background: url('@/assets/images/evening.png') no-repeat center center fixed;
-  background-size: cover;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <ion-content :class="time">
+  <ion-content :class="time ? time : 'afternoon'" :fullscreen="true">
     <slot></slot>
   </ion-content>
 </template>
