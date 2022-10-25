@@ -2,7 +2,7 @@
   <your-magic-page>
     <your-magic-content>
       <item-block>
-        <circle-button @click="() => router.back()" icon="back.png" />
+        <circle-button @click="() => router.go(-1)" icon="back.png" />
       </item-block>
       <item-block title="New reading" description="First, type your question." />
       <item-block lines="full" :form="true" :background="true">

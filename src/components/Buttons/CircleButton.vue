@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="alert" class="alert"></div>
-    <ion-button>
+    <ion-button @click="router.push(link)">
       <image-media :src="icon" />  
     </ion-button>
   </div>
@@ -11,10 +11,15 @@
 import { IonButton } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import ImageMedia from '../Media/ImageMedia.vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: { IonButton, ImageMedia },
-  props: [ 'icon', 'alert' ]
+  props: [ 'icon', 'alert', 'link' ],
+  setup() {
+    const router = useRouter();
+    return { router };
+  }
 });
 </script>
 

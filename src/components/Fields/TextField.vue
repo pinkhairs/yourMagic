@@ -13,10 +13,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-div {
-  padding: 5px 10px;
-  background: rgba(255,255,255,.7);
-}
 ion-textarea {
   --color: #000;
 }

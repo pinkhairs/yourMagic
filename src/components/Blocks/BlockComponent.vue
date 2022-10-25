@@ -13,7 +13,7 @@
         {{content}}
       </ion-item-content>
     </div>
-    <div v-if="img" class="image">
+    <div v-if="img" class="image" :style="{textAlign: 'center'}">
       <image-media :src="img" alt=""></image-media>
     </div>
   </div>

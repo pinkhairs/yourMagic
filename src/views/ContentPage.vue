@@ -1,7 +1,7 @@
 <template>
   <your-magic-page>
     <your-magic-content>
-      <text-button @click="() => router.back()" text="Back"></text-button>
+      <text-button @click="() => router.go(-1)" text="Back"></text-button>
       <text-heading title="#1. Text" />
       <paragraph-text content="Example." />
       <text-heading title="#2. List Table" />

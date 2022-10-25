@@ -1,7 +1,7 @@
 <template>
   <your-magic-page>
     <your-magic-content>
-      <text-button @click="() => router.back()" text="Back"></text-button>
+      <text-button @click="() => router.go(-1)" text="Back"></text-button>
       <ion-grid>
         <ion-row>
           <ion-col size="6"><ion-img src="https://via.placeholder.com/400x400" /></ion-col>

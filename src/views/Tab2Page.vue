@@ -2,7 +2,7 @@
   <your-magic-page>
     <your-magic-content>
       <stack-list>
-        <item-block router-link="/content" title="Library" />
+        <item-block title="Library" />
         <item-block :background="true" link="/new-reading" subtitle="One two three" />
         <item-block :background="true" link="/new-reading" subtitle="Question #2" />
         <item-block :background="true" link="/new-reading" subtitle="Tarot question" />

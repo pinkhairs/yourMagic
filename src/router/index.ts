@@ -12,6 +12,7 @@ import SearchPage from '@/views/SearchPage.vue'
 import SettingsPage from '@/views/SettingsPage.vue'
 import ContentPage from '@/views/ContentPage.vue'
 import NewDeckPage from '@/views/NewDeckPage.vue'
+import NotificationsPage from '@/views/NotificationsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -79,6 +80,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/new-deck',
     component: NewDeckPage
+  },
+  {
+    path: '/notifications',
+    component: NotificationsPage
   }
 ]
 

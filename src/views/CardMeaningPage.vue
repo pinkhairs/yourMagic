@@ -1,7 +1,7 @@
 <template>
   <your-magic-page>
     <your-magic-content>
-      <text-button @click="() => router.back()" text="Back"></text-button>
+      <text-button @click="() => router.go(-1)" text="Back"></text-button>
       <text-heading :level="2" title="Position" />
       <text-heading :level="3" title="The Card Name" />
       <ion-img src="https://via.placeholder.com/250x400" alt="The Card Name" />

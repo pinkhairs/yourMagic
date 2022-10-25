@@ -1,14 +1,17 @@
 <template>
   <your-magic-page>
     <your-magic-content>
+      <item-block>
+        <circle-button @click="() => router.go(-1)" icon="back.png" />
+      </item-block>
       <stack-list>
-        <item-block>
-          <circle-button @click="() => router.go(-1)" icon="back.png" />
+        <item-block title="Notifications" />
+        <item-block :background="true" link="/content">
+          <article-block title="Upgrade?" content="Placeholder text. Lorem ipsum dolor sit amet lorem." img="red-star.png" />
         </item-block>
-        <item-block title="Settings" />
-        <item-block :background="true" link="/new-reading" subtitle="One two three" />
-        <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-        <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+        <item-block :background="true" link="/content">
+          <article-block title="Virgo New Moon!" subtitle="Tarostrology" content="What do you want to write here? 🌝" img="virgo.png" />
+        </item-block>
       </stack-list>
     </your-magic-content>
   </your-magic-page>
@@ -19,23 +22,25 @@ import { defineComponent } from 'vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
+import CircleButton from '../components/Buttons/CircleButton.vue';
+import YourMagicContent from '../components/Page/YourMagicContent.vue';
+import ArticleBlock from '../components/Blocks/ArticleBlock.vue';
 import { useRouter } from 'vue-router';
-import YourMagicContent from '@/components/Page/YourMagicContent.vue';
-import CircleButton from '@/components/Buttons/CircleButton.vue';
 
 export default  defineComponent({
-  name: 'SettingsPage',
+  name: 'Tab1Page',
   data() {
     return {
-      time: 'morning'
+      time: 'afternoon'
     }
   },
   components: {
     ItemBlock,
     YourMagicPage,
     StackList,
+    CircleButton,
     YourMagicContent,
-    CircleButton
+    ArticleBlock
   },
   setup() {
     const router = useRouter();

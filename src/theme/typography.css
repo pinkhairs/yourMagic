@@ -20,7 +20,7 @@ body {
   --ion-font-family: Eczar, Times, serif !important;
 }
 
-h1, h2, h3, h4, h5, h6, label {
+h1, h2, h3, h4, h5, h6, label, ion-button {
   font-family: Alegreya, Georgia, serif;
   font-weight: 900;
   font-style: italic;

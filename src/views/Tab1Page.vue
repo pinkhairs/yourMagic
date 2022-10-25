@@ -2,8 +2,8 @@
   <your-magic-page>
     <your-magic-content>
       <div class="top-buttons">
-        <circle-button icon="cog.png" />
-        <circle-button icon="bell.png" :alert="true" />
+        <circle-button link="/settings" icon="cog.png" />
+        <circle-button link="/notifications" icon="bell.png" :alert="true" />
       </div>
       <stack-list>
         <item-block>

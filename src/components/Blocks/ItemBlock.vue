@@ -2,7 +2,7 @@
   <ion-item
     v-if="link"
     :lines="lines ? 'full' : 'none'"
-    :router-link="link"
+    @click="() => router.push(link)"
     :class="{link, background}">
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
@@ -30,6 +30,7 @@
 import { IonItem, IonLabel } from '@ionic/vue';
 import { defineComponent } from 'vue'
 import TextHeading from '../Headings/TextHeading.vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: { IonItem, IonLabel, TextHeading },
@@ -38,6 +39,10 @@ export default defineComponent({
     clickable() {
       return this.link ? true : false;
     }
+  },
+  setup() {
+    const router = useRouter();
+    return { router };
   }
 })
 </script>
@@ -52,6 +57,7 @@ ion-item {
   --inner-padding-bottom: 1.25em;
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
+  --border-color: var(--border-color);
 }
 ion-item:not(.background) {
   --background: none;

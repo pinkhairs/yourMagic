@@ -1,7 +1,7 @@
 <template>
   <your-magic-page>
     <your-magic-content>
-      <text-button @click="() => router.back()" text="Back"></text-button>
+      <text-button @click="() => router.go(-1)" text="Back"></text-button>
       <gallery-media></gallery-media>
       <text-button @click="() => router.push('/deck')" text="Done"></text-button>
     </your-magic-content>

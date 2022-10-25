@@ -49,6 +49,8 @@ ion-content.morning ion-textarea {
 }
 ion-content.morning ion-item {
   --border-color: #000 !important;
+  --ion-border-color: #000 !important;
+  --ion-item-border-color: #000 !important;
 }
 ion-content.morning ion-input {
   --color: #000 !important;
