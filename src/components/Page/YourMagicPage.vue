@@ -1,5 +1,5 @@
 <template>
-  <ion-page :class="time">
+  <ion-page>
     <slot></slot>
   </ion-page>
 </template>
@@ -9,7 +9,6 @@ import { defineComponent } from 'vue';
 import { IonPage } from '@ionic/vue';
 
 export default defineComponent({
-  components: { IonPage },
-  props: [ 'time' ]
+  components: { IonPage }
 });
 </script>

@@ -45,7 +45,6 @@ export default defineComponent({
 <style scoped>
 .link {
   --border-width: 2px 0;
-  --border-color: #000;
   margin-bottom: -2px;
 }
 ion-item {
@@ -71,7 +70,6 @@ ion-item.background.form {
 }
 .lines {
   --border-width: 2px 0;
-  --border-color: #000;
   margin-bottom: -2px;
   --box-shadow: none;
 }

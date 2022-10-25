@@ -1,5 +1,5 @@
 <template>
-  <your-magic-page :time="time">
+  <your-magic-page>
     <your-magic-content>
       <item-block>
         <circle-button @click="() => router.back()" icon="back.png" />

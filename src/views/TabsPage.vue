@@ -1,5 +1,5 @@
 <template>
-  <ion-page>
+  <your-magic-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
@@ -20,17 +20,18 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
-  </ion-page>
+  </your-magic-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonRouterOutlet } from '@ionic/vue';
 import { star, book, calendarClear, search } from 'ionicons/icons';
+import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 
 export default defineComponent({
   name: 'TabsPage',
-  components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet },
+  components: { IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet, YourMagicPage },
   setup() {
     return {
       star, 

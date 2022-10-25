@@ -1,11 +1,13 @@
 <template>
   <your-magic-page>
-    <stack-list>
-      <item-block router-link="/content" title="Library" />
-      <item-block :background="true" link="/new-reading" subtitle="One two three" />
-      <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-      <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
-    </stack-list>
+    <your-magic-content>
+      <stack-list>
+        <item-block router-link="/content" title="Library" />
+        <item-block :background="true" link="/new-reading" subtitle="One two three" />
+        <item-block :background="true" link="/new-reading" subtitle="Question #2" />
+        <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+      </stack-list>
+    </your-magic-content>
   </your-magic-page>
 </template>
 
@@ -14,6 +16,7 @@ import { defineComponent } from 'vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
+import YourMagicContent from '@/components/Page/YourMagicContent.vue';
 
 export default  defineComponent({
   name: 'Tab2Page',
@@ -25,7 +28,8 @@ export default  defineComponent({
   components: {
     ItemBlock,
     YourMagicPage,
-    StackList
+    StackList,
+    YourMagicContent
 }
 });
 </script>

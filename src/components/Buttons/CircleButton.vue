@@ -25,7 +25,6 @@ ion-button {
   --border-radius: 100%;
   --background: #FF92E1;
   --border-width: 2px;
-  --border-color: #000;
   --border-style: solid;
   --padding-start: 0;
   --padding-end: 0;

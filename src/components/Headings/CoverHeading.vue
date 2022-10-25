@@ -12,7 +12,29 @@ import ImageMedia from '@/components/Media/ImageMedia.vue';
 
 export default defineComponent({
   components: { ImageMedia },
-  props: ['time', 'name']
+  props: ['name'],
+  data() {
+    return {
+      time: 'morning'
+    }
+  },
+  methods: {
+    changeBackgroundColor() {
+      let currentTime = new Date().getHours()
+      let morningTimes = [6, 7, 8, 9, 10, 11]
+      let afternoonTimes = [12, 13, 14, 15, 16, 17]
+      if (morningTimes.includes(currentTime)) {
+        this.time = 'morning'
+      } else if (afternoonTimes.includes(currentTime)) {
+        this.time = 'afternoon'
+      } else {
+        this.time = 'evening'
+      }
+    }
+  },
+  mounted() {
+    this.changeBackgroundColor()
+  }
 });
 </script>
 

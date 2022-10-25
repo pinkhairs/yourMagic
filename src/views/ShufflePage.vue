@@ -1,6 +1,6 @@
 <template>
   <your-magic-page :time="time">
-    <ion-content>
+    <your-magic-content>
       <item-block>
         <circle-button @click="() => router.back()" icon="back.png" />
       </item-block>
@@ -10,7 +10,7 @@
       <item-block>
         <image-media :center="true" src="cards.png" />
       </item-block>
-    </ion-content>
+    </your-magic-content>
     <ion-footer>
       <text-button expand="full" @click="() => router.push('/reading')" text="Ready &rarr;" />
     </ion-footer>
@@ -27,6 +27,7 @@ import CircleButton from '@/components/Buttons/CircleButton.vue';
 import { useRouter } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import ImageMedia from '../components/Media/ImageMedia.vue';
+import YourMagicContent from '@/components/Page/YourMagicContent.vue';
 
 export default  defineComponent({
   name: 'ShufflePage',
@@ -42,7 +43,8 @@ export default  defineComponent({
     YourMagicPage,
     CircleButton,
     ItemBlock,
-    ImageMedia
+    ImageMedia,
+    YourMagicContent
 },
   setup() {
     const router = useRouter();

@@ -110,7 +110,7 @@ export default defineComponent({
   width: 99%;
 }
 .row > div {
-  border: 1px #ccc solid;
+  border: 1px #999 solid;
   min-height: 100%;
   margin-right: -1px;
 }
