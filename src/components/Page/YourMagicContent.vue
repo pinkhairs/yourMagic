@@ -1,5 +1,6 @@
 <template>
   <ion-content :class="time" :fullscreen="true">
+    <div class="safe-area-top"></div>
     <slot></slot>
   </ion-content>
 </template>
@@ -36,6 +37,11 @@ export default defineComponent({
 </script>
 
 <style>
+@supports (padding-top: env(safe-area-inset-top)) { 
+  .safe-area-top { 
+    height: env(safe-area-inset-top); 
+  } 
+} 
 ion-content.morning {
   --color: #000;
   --border-color: #000 !important;
