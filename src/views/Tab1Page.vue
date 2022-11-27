@@ -36,10 +36,11 @@ import FakeDoorButton from '@/components/Buttons/FakeDoorButton.vue';
 import CoverHeading from '@/components/Headings/CoverHeading.vue';
 import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
-import YourMagicPage from '../components/Page/YourMagicPage.vue';
-import StackList from '../components/Lists/StackList.vue';
-import CircleButton from '../components/Buttons/CircleButton.vue';
-import YourMagicContent from '../components/Page/YourMagicContent.vue';
+import YourMagicPage from '@/components/Page/YourMagicPage.vue';
+import StackList from '@/components/Lists/StackList.vue';
+import CircleButton from '@/components/Buttons/CircleButton.vue';
+import YourMagicContent from '@/components/Page/YourMagicContent.vue';
+import WordPress from '@/services/wordpress';
 
 export default  defineComponent({
   name: 'Tab1Page',
@@ -58,7 +59,7 @@ export default  defineComponent({
     StackList,
     CircleButton,
     YourMagicContent
-}
+  }
 });
 </script>
 

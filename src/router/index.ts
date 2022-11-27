@@ -13,6 +13,9 @@ import SettingsPage from '@/views/SettingsPage.vue'
 import ContentPage from '@/views/ContentPage.vue'
 import NewDeckPage from '@/views/NewDeckPage.vue'
 import NotificationsPage from '@/views/NotificationsPage.vue'
+import OnboardingPage from '@/views/OnboardingPage.vue'
+import { Storage } from '@ionic/storage';
+import WordPress from '@/services/wordpress'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -84,12 +87,34 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/notifications',
     component: NotificationsPage
+  },
+  {
+    path: '/onboarding',
+    component: OnboardingPage
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+const storage = new Storage()
+storage.create()
+
+router.beforeEach((to, from, next) => {
+    console.log({WordPress})
+    storage.get('user').then((user) => {
+    if (user) {
+      if (WordPress.userIsLoggedIn(user.token)) {
+        next()
+      } else {
+      next({path: '/onboarding'})
+      }
+    } else {
+      next({path: '/onboarding'})
+    }
+  });
 })
 
 export default router

@@ -12,3 +12,10 @@ export default defineComponent({
   components: { IonPage }
 });
 </script>
+
+<style>
+ion-page {
+  --background: url('@/assets/images/evening.png') no-repeat center center fixed;
+  background-size: cover;
+}
+</style>

@@ -39,7 +39,7 @@ export default defineComponent({
 <style>
 @supports (padding-top: env(safe-area-inset-top)) { 
   .safe-area-top { 
-    height: env(safe-area-inset-top); 
+    padding-top: env(safe-area-inset-top); 
   } 
 } 
 ion-content.morning {
@@ -85,8 +85,7 @@ ion-content.evening {
   --border-color: #999;
   --ion-item-color: #fff;
   --ion-text-color: #fff;
-  --background: url('@/assets/images/evening.png') no-repeat center center fixed;
-  background-size: cover;
+  --background: url('@/assets/images/evening.png') no-repeat center / cover fixed;
 }
 ion-content.evening ion-button {
   --border-color: #999 !important;

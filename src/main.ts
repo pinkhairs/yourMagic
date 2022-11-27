@@ -23,11 +23,29 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/typography.css';
+import { StatusBar, Style } from '@capacitor/status-bar';
+
+const getTheTimeOfDay = () => {
+  const currentTime = new Date().getHours()
+  const morningTimes = [6, 7, 8, 9, 10, 11]
+  const afternoonTimes = [12, 13, 14, 15, 16, 17]
+  if (morningTimes.includes(currentTime)) {
+    return 'morning'
+  } else if (afternoonTimes.includes(currentTime)) {
+    return 'afternoon'
+  } else {
+    return 'evening'
+  }
+}
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
   
 router.isReady().then(() => {
+  StatusBar.setOverlaysWebView({ overlay: true })
+  if (getTheTimeOfDay() === 'afternoon' || getTheTimeOfDay() === 'evening') {
+    StatusBar.setStyle({ style: Style.Dark })
+  }
   app.mount('#app');
 });
