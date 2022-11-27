@@ -16,6 +16,7 @@ import NotificationsPage from '@/views/NotificationsPage.vue'
 import OnboardingPage from '@/views/OnboardingPage.vue'
 import { Storage } from '@ionic/storage';
 import WordPress from '@/services/wordpress'
+import { useSSRContext } from 'vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -103,18 +104,18 @@ const storage = new Storage()
 storage.create()
 
 router.beforeEach((to, from, next) => {
-    console.log({WordPress})
+  const outsidePages = ['/onboarding']
+  if (outsidePages.includes(to.path)) {
+    next()
+  } else {
     storage.get('user').then((user) => {
-    if (user) {
-      if (WordPress.userIsLoggedIn(user.token)) {
+      if (user && user.token) {
         next()
       } else {
-      next({path: '/onboarding'})
+        next({path: '/onboarding'})
       }
-    } else {
-      next({path: '/onboarding'})
-    }
-  });
+    });
+  }
 })
 
 export default router

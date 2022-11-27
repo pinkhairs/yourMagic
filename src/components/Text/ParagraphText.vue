@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{content}}
+    <slot></slot>
   </div>
 </template>
 

@@ -1,5 +1,7 @@
 <template>
-  <ion-button :expand="width">{{text}}</ion-button>
+  <div>
+    <ion-button :expand="width">{{text}}</ion-button>
+  </div>
 </template>
 
 <script>
@@ -11,3 +13,9 @@ export default defineComponent({
   props: [ 'width', 'text' ]
 });
 </script>
+
+<style scoped>
+div {
+  box-shadow: 0 0 0 2px #000000;
+}
+</style>

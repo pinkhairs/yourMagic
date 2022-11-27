@@ -3,7 +3,7 @@
     v-if="link"
     :lines="lines ? 'full' : 'none'"
     @click="() => router.push(link)"
-    :class="{link, background}">
+    :class="{link, background, center}">
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
       <text-heading :level="1" v-if="title">{{title}}</text-heading>
@@ -15,7 +15,7 @@
   <ion-item
     v-else
     :lines="'none'"
-    :class="{lines, background, form}">
+    :class="{lines, background, form, center}">
     <ion-label position="stacked" v-if="title || subtitle || description">
       <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
       <text-heading :level="1" v-if="title">{{title}}</text-heading>
@@ -34,7 +34,7 @@ import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: { IonItem, IonLabel, TextHeading },
-  props: ['subtitle', 'title', 'description', 'link', 'background', 'lines', 'form'],
+  props: ['subtitle', 'title', 'description', 'link', 'background', 'lines', 'form', 'center'],
   computed: {
     clickable() {
       return this.link ? true : false;
@@ -85,5 +85,9 @@ ion-item.background.form {
 .lines .item-inner {
   --border-color: rgba(0,0,0,0) !important;
   --border-style: none !important;
+}
+.center {
+  display: grid;
+  place-content: center;
 }
 </style>
