@@ -7,7 +7,7 @@
       </div>
       <stack-list>
         <item-block>
-          <cover-heading :time="time" name="Bartholomew" />
+          <cover-heading :time="time" :name="firstName" />
         </item-block>
         <item-block :background="true" subtitle="Get a reading" link="/new-reading">
           <fake-door-button />
@@ -46,7 +46,8 @@ export default  defineComponent({
   name: 'Tab1Page',
   data() {
     return {
-      time: 'afternoon'
+      time: 'afternoon',
+      firstName: ''
     }
   },
   components: {
@@ -59,6 +60,11 @@ export default  defineComponent({
     StackList,
     CircleButton,
     YourMagicContent
+  },
+  mounted() {
+    WordPress.getUser().then((user) => {
+        this.firstName = user.firstName
+    })
   }
 });
 </script>

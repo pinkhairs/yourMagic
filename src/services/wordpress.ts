@@ -17,7 +17,12 @@ export default new class {
         });
     }
     async request(path: string, data: object = {}, token = '', requestMethod = 'POST') {
-        const headers = {'Content-type': 'application/json'}
+        let headers: any = {'Content-type': 'application/json'}
+        if (this.userToken) {
+            headers = {'Content-type': 'application/json', 'Authorization': `Bearer ${this.userToken}`}
+        } else {    
+            headers = {'Content-type': 'application/json'}
+        }
         const response = await fetch(environment.apiUrl+path, {
             method: requestMethod,
             headers,
@@ -27,7 +32,6 @@ export default new class {
     }
     getToken(data: object) {
         return this.request('jwt-auth/v1/token', data).then((response) => {
-            console.log({response})
             if (response.token) {
                 storage.set('user', response).then(() => {
                     router.replace('/')
@@ -35,7 +39,7 @@ export default new class {
             }
         })
     }
-    async userIsLoggedIn() {
+    async getUser() {
         const response = await this.request('jwt-auth/v1/token/validate', {}, this.userToken);
         const user = await storage.get('user');
         return user;
@@ -49,6 +53,7 @@ export default new class {
     }
     updateAccount(data: object) {
         this.request('wp/v2/users/update', data).then((response) => {
+            console.log({response})
             return response.code === 200
         })
     }

@@ -25,7 +25,7 @@ import WordPress from '@/services/wordpress'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab-1',
+    redirect: '/tabs',
   },
   {
     path: '/tabs/',
@@ -134,14 +134,13 @@ router.beforeEach((to, from, next) => {
   } else {
     storage.get('user').then((user) => {
       if (user && user.token) {
-        WordPress.userIsLoggedIn().then((userIsLoggedIn) => {
-          if (userIsLoggedIn) {
+        WordPress.getUser().then((user) => {
+          if (user) {
             next()
           } else {
             next({path: '/onboarding'})
           }
         })
-        next()
       } else {
         next({path: '/onboarding'})
       }

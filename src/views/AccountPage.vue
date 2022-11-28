@@ -63,12 +63,11 @@ setup() {
     return { router };
 },
 mounted() {
-    WordPress.userIsLoggedIn().then((isLoggedIn) => {
-      console.log({isLoggedIn})
-        this.firstName = isLoggedIn.firstName
-        this.username = isLoggedIn.username
-        this.email = isLoggedIn.email
-        this.password = isLoggedIn.password
+    WordPress.getUser().then((user) => {
+        this.firstName = user.firstName
+        this.username = user.username
+        this.email = user.email
+        this.password = user.password
     })
 },
 methods: {
