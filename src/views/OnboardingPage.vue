@@ -67,11 +67,11 @@ export default  defineComponent({
     IonSlides,
     IonSlide,
     ParagraphText
-},
-setup() {
-  const router = useRouter();
-  return { router };
-}
+  },
+  setup() {
+    const router = useRouter();
+    return { router };
+  }
 });
 </script>
 

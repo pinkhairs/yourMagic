@@ -6,7 +6,7 @@
       </item-block>
       <item-block title="New reading" description="First, type your question." />
       <item-block lines="full" :form="true" :background="true">
-        <text-field  />
+        <textarea-field  />
       </item-block>
       <item-block description="Now, choose a spread." />
       <div class="spacer-1"></div>
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TextField from '@/components/Fields/TextField.vue';
+import TextareaField from '@/components/Fields/TextareaField.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import CircleButton from '@/components/Buttons/CircleButton.vue';
@@ -56,7 +56,7 @@ export default  defineComponent({
     }
   },
   components: {
-    TextField,
+    TextareaField,
     ItemBlock,
     YourMagicPage,
     CircleButton,

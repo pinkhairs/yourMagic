@@ -16,6 +16,7 @@ export default defineComponent({
 
 <style scoped>
 div {
+  background: #ff93e2;
   box-shadow: 0 0 0 2px #000000;
 }
 </style>

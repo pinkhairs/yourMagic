@@ -6,9 +6,10 @@
           <circle-button @click="() => router.go(-1)" icon="back.png" />
         </item-block>
         <item-block title="Settings" />
-        <item-block :background="true" link="/new-reading" subtitle="One two three" />
-        <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-        <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+        <item-block :background="true" link="/account" subtitle="Account" />
+        <item-block :background="true" link="/notifications" subtitle="Notifications" />
+        <item-block :background="true" link="/subscription" subtitle="Your Subscription" />
+        <item-block link="/logout" subtitle="Logout" />
       </stack-list>
     </your-magic-content>
   </your-magic-page>
@@ -22,6 +23,7 @@ import StackList from '../components/Lists/StackList.vue';
 import { useRouter } from 'vue-router';
 import YourMagicContent from '@/components/Page/YourMagicContent.vue';
 import CircleButton from '@/components/Buttons/CircleButton.vue';
+import { Storage } from '@ionic/storage';
 
 export default  defineComponent({
   name: 'SettingsPage',

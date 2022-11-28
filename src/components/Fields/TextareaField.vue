@@ -1,19 +1,19 @@
 <template>
-  <ion-input :autofocus="autofocus" placeholder="• • •"></ion-input>
+    <ion-textarea :autofocus="autofocus" placeholder="• • •"></ion-textarea>
 </template>
 
 <script>
-import { IonInput } from '@ionic/vue';
+import { IonTextarea } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { IonInput },
+  components: { IonTextarea },
   props: [ 'autofocus' ]
 });
 </script>
 
 <style scoped>
-ion-input {
+ion-textarea {
   --color: #000;
 }
 </style>

@@ -22,8 +22,10 @@
       <div class="description" v-if="description">{{description}}</div>
     </ion-label>
     <div class="spacer"></div>
+    <ion-label class="inline-label" position="inline" v-if="form && label">{{label}}</ion-label>
     <slot />
   </ion-item>
+  <div class="spacer" v-if="form"></div>
 </template>
 
 <script>
@@ -34,7 +36,7 @@ import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: { IonItem, IonLabel, TextHeading },
-  props: ['subtitle', 'title', 'description', 'link', 'background', 'lines', 'form', 'center'],
+  props: ['subtitle', 'title', 'description', 'link', 'background', 'lines', 'form', 'center', 'label'],
   computed: {
     clickable() {
       return this.link ? true : false;
@@ -48,16 +50,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
+ion-label.inline-label {
+  --color: #000;
+  font-weight: 700;
+}
 .link {
   --border-width: 2px 0;
   margin-bottom: -2px;
 }
 ion-item {
   --inner-padding-top: 0.5em;
-  --inner-padding-bottom: 1.25em;
   --padding-inline-start: 0 !important;
   --padding-inline-end: 0 !important;
   --border-color: var(--border-color);
+  --inner-padding-bottom: 0.5em !important;
+
 }
 ion-item:not(.background) {
   --background: none;
@@ -89,5 +96,8 @@ ion-item.background.form {
 .center {
   display: grid;
   place-content: center;
+}
+.spacer {
+  height: 10px;
 }
 </style>

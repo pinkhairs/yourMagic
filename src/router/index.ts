@@ -15,8 +15,12 @@ import NewDeckPage from '@/views/NewDeckPage.vue'
 import NotificationsPage from '@/views/NotificationsPage.vue'
 import OnboardingPage from '@/views/OnboardingPage.vue'
 import { Storage } from '@ionic/storage';
+import LoginPage from '@/views/LoginPage.vue'
+import SignupPage from '@/views/SignupPage.vue'
+import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue';
+import LogoutPage from '@/views/LogoutPage.vue';
+import AccountPage from '@/views/AccountPage.vue';
 import WordPress from '@/services/wordpress'
-import { useSSRContext } from 'vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -92,6 +96,26 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/onboarding',
     component: OnboardingPage
+  },
+  {
+    path: '/login',
+    component: LoginPage
+  },
+  {
+    path: '/signup',
+    component: SignupPage
+  },
+  {
+    path: '/forgot-password',
+    component: ForgotPasswordPage
+  },
+  {
+    path: '/logout',
+    component: LogoutPage
+  },
+  {
+    path: '/account',
+    component: AccountPage
   }
 ]
 
@@ -104,12 +128,19 @@ const storage = new Storage()
 storage.create()
 
 router.beforeEach((to, from, next) => {
-  const outsidePages = ['/onboarding']
+  const outsidePages = ['/onboarding', '/login', '/signup', '/forgot-password']
   if (outsidePages.includes(to.path)) {
     next()
   } else {
     storage.get('user').then((user) => {
       if (user && user.token) {
+        WordPress.userIsLoggedIn().then((userIsLoggedIn) => {
+          if (userIsLoggedIn) {
+            next()
+          } else {
+            next({path: '/onboarding'})
+          }
+        })
         next()
       } else {
         next({path: '/onboarding'})

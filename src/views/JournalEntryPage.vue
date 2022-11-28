@@ -10,7 +10,7 @@
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
       <item-block lines="full" :form="true" :background="true">
-        <text-field></text-field>
+        <textarea-field></textarea-field>
       </item-block>
       <text-button expand="full" @click="() => router.push('/reading')" text="Done" />
     </ion-footer>
@@ -26,7 +26,7 @@ import CircleButton from '@/components/Buttons/CircleButton.vue';
 import { useRouter } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
-import TextField from '@/components/Fields/TextField.vue';
+import TextareaField from '@/components/Fields/TextareaField.vue';
 import TextButton from '@/components/Buttons/TextButton.vue'
 
 export default  defineComponent({
@@ -43,7 +43,7 @@ export default  defineComponent({
     CircleButton,
     ItemBlock,
     YourMagicContent,
-    TextField,
+    TextareaField,
     TextButton
 },
   setup() {
