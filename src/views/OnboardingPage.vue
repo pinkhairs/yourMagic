@@ -16,21 +16,21 @@
             <div>
               <image-media src="slideplaceholder.png" />
               <text-heading :level="2">Your Magic</text-heading>
-              <paragraph-text>is a simple, secure, and private way to store your passwords.</paragraph-text>
+              <paragraph-text>is a simple, secure, and private way to store your magic.</paragraph-text>
             </div>
           </ion-slide>
           <ion-slide>
             <div>
               <image-media src="slideplaceholder.png" />
               <text-heading :level="2">Your Magic</text-heading>
-              <paragraph-text>is a simple, secure, and private way to store your passwords.</paragraph-text>
+              <paragraph-text>is a simple, secure, and private way to store your magic.</paragraph-text>
             </div>
           </ion-slide>
           <ion-slide>
             <div>
               <image-media src="slideplaceholder.png" />
               <text-heading :level="2">Your Magic</text-heading>
-              <paragraph-text>is a simple, secure, and private way to store your passwords.</paragraph-text>
+              <paragraph-text>is a simple, secure, and private way to store your magic.</paragraph-text>
             </div>
           </ion-slide>
         </ion-slides>

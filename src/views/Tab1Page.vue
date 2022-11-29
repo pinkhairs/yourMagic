@@ -7,7 +7,7 @@
       </div>
       <stack-list>
         <item-block>
-          <cover-heading :time="time" :name="firstName" />
+          <cover-heading :time="time" />
         </item-block>
         <item-block :background="true" subtitle="Get a reading" link="/new-reading">
           <fake-door-button />
@@ -60,11 +60,6 @@ export default  defineComponent({
     StackList,
     CircleButton,
     YourMagicContent
-  },
-  mounted() {
-    WordPress.getUser().then((user) => {
-        this.firstName = user.firstName
-    })
   }
 });
 </script>

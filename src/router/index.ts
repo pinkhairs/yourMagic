@@ -21,6 +21,7 @@ import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue';
 import LogoutPage from '@/views/LogoutPage.vue';
 import AccountPage from '@/views/AccountPage.vue';
 import WordPress from '@/services/wordpress'
+import Tab1Page from '@/views/Tab1Page.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'tab-1',
-        component: () => import('@/views/Tab1Page.vue')
+        component: Tab1Page
       },
       {
         path: 'tab-2',
@@ -128,6 +129,9 @@ const storage = new Storage()
 storage.create()
 
 router.beforeEach((to, from, next) => {
+  if (to.path === '/tabs/tab-1' && from.path === '/settings') {
+    window.location.reload()
+  }
   const outsidePages = ['/onboarding', '/login', '/signup', '/forgot-password']
   if (outsidePages.includes(to.path)) {
     next()

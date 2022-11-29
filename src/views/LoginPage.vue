@@ -10,11 +10,17 @@
             <paragraph-text>Welcome back!</paragraph-text>
         </div>
       </item-block>
-      <item-block :form="true" :background="true" label="Email">
+      <item-block :form="true" :background="true" label="Username">
         <text-field v-model="email"></text-field>
       </item-block>
       <item-block :form="true" :background="true" label="Password">
         <text-field v-model="password"></text-field>
+      </item-block>
+      <item-block v-if="errors">
+        <paragraph-text>{{errors}}</paragraph-text>
+      </item-block>
+      <item-block>
+        <paragraph-text @click="() => router.push('/forgot-password')">Forgot your password?</paragraph-text>
       </item-block>
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
@@ -52,7 +58,8 @@ export default  defineComponent({
 data() {
   return {
     email: '',
-    password: ''
+    password: '',
+    errors: ''
   }
 },
 setup() {
@@ -64,6 +71,12 @@ methods: {
       WordPress.getToken({
         username: this.email,
         password: this.password
+      }).then((login) => {
+        if (login) {
+          this.$router.replace('/')
+        } else {
+          this.errors = 'Invalid username or password'
+        }
       })
     }
 }

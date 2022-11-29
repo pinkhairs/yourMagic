@@ -19,6 +19,9 @@
       <item-block :form="true" :background="true" label="Password (if changing)">
         <text-field v-model="password"></text-field>
       </item-block>
+      <item-block v-if="errors">
+        <paragraph-text>{{errors}}</paragraph-text>
+      </item-block>
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
       <text-button width="full" @click="updateAccount()" text="Save Information" />
@@ -38,6 +41,7 @@ import TextField from '@/components/Fields/TextField.vue'
 import TextHeading from '@/components/Headings/TextHeading.vue'
 import CircleButton from '@/components/Buttons/CircleButton.vue'
 import WordPress from '@/services/wordpress'
+import { Storage } from '@ionic/storage'
 
 export default  defineComponent({
   components: {
@@ -55,7 +59,9 @@ data() {
     firstName: '',
     username: '',
     email: '',
-    password: ''
+    password: '',
+    token: '',
+    errors: ''
   }
 },
 setup() {
@@ -68,11 +74,18 @@ mounted() {
         this.username = user.username
         this.email = user.email
         this.password = user.password
+        this.token = user.token
     })
 },
 methods: {
     updateAccount() {
-      WordPress.updateAccount({firstName: this.firstName, username: this.username, password: this.password})
+      WordPress.updateAccount({firstName: this.firstName, username: this.username, password: this.password, token: this.token, email: this.email}).then((updateAccount) => {
+        if (updateAccount) {
+          this.errors = 'Successfully saved.'
+        } else {
+          this.errors = 'Double-check your info and try again.'
+        }
+      })
     }
 }
 });

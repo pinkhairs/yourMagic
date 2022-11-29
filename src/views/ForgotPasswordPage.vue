@@ -10,9 +10,11 @@
             <paragraph-text>Just enter your email...</paragraph-text>
         </div>
       </item-block>
-      <item-block>
-        <ion-label position="stacked">Email</ion-label>
-        <text-field></text-field>
+      <item-block :form="true" :background="true" label="Email">
+        <text-field v-model="email"></text-field>
+      </item-block>
+      <item-block v-if="errors">
+        <paragraph-text>{{errors}}</paragraph-text>
       </item-block>
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
@@ -23,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonFooter, IonLabel } from '@ionic/vue';
+import { IonFooter } from '@ionic/vue';
 import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import { useRouter } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
@@ -33,8 +35,15 @@ import TextField from '@/components/Fields/TextField.vue'
 import TextHeading from '@/components/Headings/TextHeading.vue'
 import ParagraphText from '@/components/Text/ParagraphText.vue'
 import CircleButton from '@/components/Buttons/CircleButton.vue'
+import WordPress from '@/services/wordpress'
 
 export default  defineComponent({
+  data() {
+    return {
+      email: '',
+      errors: ''
+    }
+  },
   components: {
     IonFooter,
     YourMagicPage,
@@ -42,7 +51,6 @@ export default  defineComponent({
     YourMagicContent,
     TextButton,
     TextField,
-    IonLabel,
     TextHeading,
     ParagraphText,
     CircleButton
@@ -53,7 +61,13 @@ setup() {
 },
 methods: {
     resetPw() {
-        this.router.push('/');
+      WordPress.sendPasswordResetLink({email: this.email}).then((resetPw) => {
+        if (resetPw) {
+          this.errors = 'Check your email inbox.'
+        } else {
+          this.errors = 'Double-check your info and try again.'
+        }
+      })
     }
 }
 });

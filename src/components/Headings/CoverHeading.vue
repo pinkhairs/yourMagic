@@ -8,14 +8,15 @@
 
 <script>
 import { defineComponent } from 'vue';
-import ImageMedia from '@/components/Media/ImageMedia.vue';
+import ImageMedia from '@/components/Media/ImageMedia.vue'
+import WordPress from '@/services/wordpress'
 
 export default defineComponent({
   components: { ImageMedia },
-  props: ['name'],
   data() {
     return {
-      time: 'morning'
+      time: 'morning',
+      name: ''
     }
   },
   methods: {
@@ -34,6 +35,9 @@ export default defineComponent({
   },
   mounted() {
     this.changeBackgroundColor()
+    WordPress.getUser().then((user) => {
+        this.name = user.firstName
+    })
   }
 });
 </script>

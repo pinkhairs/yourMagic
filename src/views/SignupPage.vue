@@ -19,6 +19,9 @@
       <item-block :form="true" :background="true" label="Password">
         <text-field v-model="password"></text-field>
       </item-block>
+      <item-block v-if="errors">
+        <paragraph-text>{{errors}}</paragraph-text>
+      </item-block>
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
       <text-button width="full" @click="signup()" text="Sign Up" />
@@ -56,7 +59,8 @@ data() {
   return {
     firstName: '',
     email: '',
-    password: ''
+    password: '',
+    errors: ''
   }
 },
 setup() {
@@ -70,6 +74,10 @@ methods: {
         username: this.email,
         email: this.email,
         password: this.password
+      }).then((signup) => {
+        if (!signup) {
+          this.errors = 'Double-check your info and try again.'
+        }
       })
     }
 }
