@@ -47,13 +47,13 @@ export default new class {
         })
     }
     updateAccount(data: any) {
-        return this.request('wp/v2/users/update', data).then((response) => {
+        return this.request('wp/v2/users/update', data, this.userToken).then((response) => {
             storage.set('user', {displayName: data.firstName, username: data.username, token: this.userToken, email: data.email})
             return response.code === 200
         })
     }
     sendPasswordResetLink(data: any) {
-        return this.request('wp/v2/users/forgot-password', data).then((response) => {
+        return this.request('wp/v2/users/forgot-password', data, this.environmentToken).then((response) => {
             return response.code === 200
         })
     }
