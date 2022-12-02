@@ -11,7 +11,7 @@
         </div>
       </item-block>
       <item-block :form="true" :background="true" label="First name">
-        <text-field v-model="firstName"></text-field>
+        <text-field v-model="displayName"></text-field>
       </item-block>
       <item-block :form="true" :background="true" label="Email">
         <text-field v-model="email"></text-field>
@@ -57,7 +57,7 @@ export default  defineComponent({
 },
 data() {
   return {
-    firstName: '',
+    displayName: '',
     email: '',
     password: '',
     errors: ''
@@ -70,12 +70,14 @@ setup() {
 methods: {
     signup() {
       WordPress.register({
-        firstName: this.firstName,
+        displayName: this.displayName,
         username: this.email,
         email: this.email,
         password: this.password
       }).then((signup) => {
-        if (!signup) {
+        if (signup) {
+          this.$router.replace('/tabs/tab-1')
+        } else {
           this.errors = 'Double-check your info and try again.'
         }
       })

@@ -8,7 +8,7 @@
         <text-heading :level="1">Account</text-heading>
       </item-block>
       <item-block :form="true" :background="true" label="First name">
-        <text-field v-model="firstName"></text-field>
+        <text-field v-model="displayName"></text-field>
       </item-block>
       <item-block :form="true" :background="true" label="Username">
         <text-field v-model="username"></text-field>
@@ -56,7 +56,7 @@ export default  defineComponent({
 },
 data() {
   return {
-    firstName: '',
+    displayName: '',
     username: '',
     email: '',
     password: '',
@@ -70,8 +70,8 @@ setup() {
 },
 mounted() {
     WordPress.getUser().then((user) => {
-        this.firstName = user.firstName
-        this.username = user.username
+        this.displayName = user.displayName
+        this.username = user.login
         this.email = user.email
         this.password = user.password
         this.token = user.token
@@ -79,7 +79,7 @@ mounted() {
 },
 methods: {
     updateAccount() {
-      WordPress.updateAccount({firstName: this.firstName, username: this.username, password: this.password, token: this.token, email: this.email}).then((updateAccount) => {
+      WordPress.updateAccount({displayName: this.displayName, username: this.username, password: this.password, token: this.token, email: this.email}).then((updateAccount) => {
         if (updateAccount) {
           this.errors = 'Successfully saved.'
         } else {

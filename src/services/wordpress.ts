@@ -17,9 +17,9 @@ export default new class {
         });
     }
     async request(path: string, data: object = {}, token = '', requestMethod = 'POST') {
-        let headers: any = {'Content-type': 'application/json'}
+        let headers: any = {'Content-Type': 'application/json'}
         if (token) {
-            headers = {'Content-type': 'application/json', 'Authorization': `Bearer ${token}`}
+            headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
         }
         const response = await fetch(environment.apiUrl+path, {
             method: requestMethod,
@@ -29,35 +29,26 @@ export default new class {
         return response.json()
     }
     getToken(data: object) {
-        return this.request('jwt-auth/v1/token', data).then((response) => {
-            if (response.token) {
-                return storage.set('user', response)
-            }
+        return this.request('jwt-auth/v1/token', data, this.environmentToken).then((response) => {
+            return storage.set('user', response.data).then(() => {
+                this.userToken = response.token
+                return response.code === 'jwt_auth_valid_credential'
+            })
         })
     }
     getUser() {
-        if (this.userToken) {
-            this.request('jwt-auth/v1/token/validate', {}, this.userToken).then((response) => {
-                if (response.data.status !== 200) {
-                    this.logout()
-                }
-            })
-        }
-        return storage.get('user')
+        return this.request('jwt-auth/v1/token/validate', {}, this.userToken).then((response) => {
+            return storage.get('user')
+        })
     }
     register(data: object) {
         return this.request('wp/v2/users/register', data, this.environmentToken).then((response) => {
-            if (response.code === 200) {
-                this.getToken(data)
-            }
-            return response.code === 200
+            return this.getToken(data)
         })
     }
     updateAccount(data: any) {
         return this.request('wp/v2/users/update', data).then((response) => {
-            if (response.code === 200) {
-                storage.set('user', {firstName: data.firstName, username: data.username, token: this.userToken, email: data.email})
-            }
+            storage.set('user', {displayName: data.firstName, username: data.username, token: this.userToken, email: data.email})
             return response.code === 200
         })
     }
