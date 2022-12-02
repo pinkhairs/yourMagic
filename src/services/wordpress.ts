@@ -48,8 +48,8 @@ export default new class {
     }
     updateAccount(data: any) {
         return this.request('wp/v2/users/update', data, this.userToken).then((response) => {
-            storage.set('user', {displayName: data.firstName, username: data.username, token: this.userToken, email: data.email})
-            return response.code === 200
+            storage.set('user', {displayName: data.displayName, username: data.username, token: this.userToken, email: data.email})
+            return response.data.statusCode === 200
         })
     }
     sendPasswordResetLink(data: any) {
