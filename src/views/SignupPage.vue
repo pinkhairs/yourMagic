@@ -11,7 +11,7 @@
         </div>
       </item-block>
       <item-block :form="true" :background="true" label="First name">
-        <text-field v-model="displayName"></text-field>
+        <text-field v-model="firstName"></text-field>
       </item-block>
       <item-block :form="true" :background="true" label="Email">
         <text-field v-model="email"></text-field>
@@ -57,7 +57,7 @@ export default  defineComponent({
 },
 data() {
   return {
-    displayName: '',
+    firstName: '',
     email: '',
     password: '',
     errors: ''
@@ -70,7 +70,7 @@ setup() {
 methods: {
     signup() {
       WordPress.register({
-        displayName: this.displayName,
+        firstName: this.firstName,
         username: this.email,
         email: this.email,
         password: this.password

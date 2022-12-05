@@ -36,7 +36,7 @@ export default defineComponent({
   mounted() {
     this.changeBackgroundColor()
     WordPress.getUser().then((user) => {
-        this.name = user.displayName
+        this.name = user.firstName
     })
   }
 });

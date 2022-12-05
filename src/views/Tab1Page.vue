@@ -47,7 +47,7 @@ export default  defineComponent({
   data() {
     return {
       time: 'afternoon',
-      displayName: ''
+      firstName: ''
     }
   },
   components: {

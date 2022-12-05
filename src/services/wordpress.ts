@@ -38,6 +38,7 @@ export default new class {
     }
     getUser() {
         return this.request('jwt-auth/v1/token/validate', {}, this.userToken).then((response) => {
+            console.log({response})
             return storage.get('user')
         })
     }
@@ -48,8 +49,8 @@ export default new class {
     }
     updateAccount(data: any) {
         return this.request('wp/v2/users/update', data, this.userToken).then((response) => {
-            storage.set('user', {displayName: data.displayName, username: data.username, token: this.userToken, email: data.email})
-            return response.data.statusCode === 200
+            storage.set('user', {firstName: data.firstName, username: data.username, token: this.userToken, email: data.email, id: response.user_id})
+            return response.code === 200
         })
     }
     sendPasswordResetLink(data: any) {
