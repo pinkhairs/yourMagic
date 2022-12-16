@@ -19,7 +19,7 @@
       </item-block>
     </your-magic-content>
     <ion-footer>
-      <text-button expand="full" @click="() => router.push('/reading')" text="Ready &rarr;" />
+      <text-button expand="full" @click="() => router.push({name: 'reading', params: { question: $route.params.question, spread: $route.params.spread }})" text="Ready &rarr;" />
     </ion-footer>
   </your-magic-page>
 </template>
@@ -31,7 +31,7 @@ import TextHeading from '@/components/Headings/TextHeading.vue';
 import TextButton from '@/components/Buttons/TextButton.vue';
 import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import CircleButton from '@/components/Buttons/CircleButton.vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import YourMagicContent from '@/components/Page/YourMagicContent.vue';
 
@@ -50,7 +50,8 @@ export default  defineComponent({
     CircleButton,
     ItemBlock,
     YourMagicContent
-},
+  },
+  props: ['question', 'spread'],
   setup() {
     const router = useRouter();
     return { router };
@@ -61,13 +62,15 @@ export default  defineComponent({
 <style scoped>
 .cardanimation{
   width:150px; 
-  height:240px; 
-  background: #fff; 
+  height:240px;
+  background: url('@/assets/images/card-back@3x.png') center/cover no-repeat;
   position:absolute; 
   margin:auto; 
-  left:0; right:0; top:40px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
-  border-radius:16px; 
+  left:0;
+  right:0;
+  top:40px;
+  box-shadow: 0 0 64px -16px rgba(255,255,255,0.25), inset 0 0 64px -16px rgba(255,255,255,0.25);
+  border-radius: 15px; 
   display:flex;
 }
 
@@ -155,4 +158,6 @@ span{
 50% {transform: translate(2.4em,0) rotate(4deg); z-index:1;}
 100% {-webkit-transform: translate(0,0);transform: translate(0,0); z-index:16;}
 } 
+
+
 </style>

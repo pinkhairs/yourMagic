@@ -1,31 +1,32 @@
 <template>
-  <ion-item
-    v-if="link"
-    :lines="lines ? 'full' : 'none'"
-    @click="() => router.push(link)"
-    :class="{link, background, center}">
-    <ion-label position="stacked" v-if="title || subtitle || description">
-      <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
-      <text-heading :level="1" v-if="title">{{title}}</text-heading>
-      <div class="description" v-if="description">{{description}}</div>
-    </ion-label>
-    <div class="spacer"></div>
-    <slot />
-  </ion-item>
-  <ion-item
-    v-else
-    :lines="'none'"
-    :class="{lines, background, form, center}">
-    <ion-label position="stacked" v-if="title || subtitle || description">
-      <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
-      <text-heading :level="1" v-if="title">{{title}}</text-heading>
-      <div class="description" v-if="description">{{description}}</div>
-    </ion-label>
-    <div class="spacer"></div>
-    <ion-label class="inline-label" position="inline" v-if="form && label">{{label}}</ion-label>
-    <slot />
-  </ion-item>
-  <div class="spacer" v-if="form"></div>
+  <div :class="{lines}">
+    <ion-item
+      v-if="link"
+      :lines="lines ? 'full' : 'none'"
+      @click="() => router.push(link)"
+      :class="{link, background, center}">
+      <ion-label position="stacked" v-if="title || subtitle || description">
+        <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
+        <text-heading :level="1" v-if="title">{{title}}</text-heading>
+        <div class="description" v-if="description">{{description}}</div>
+      </ion-label>
+      <div class="spacer"></div>
+      <slot />
+    </ion-item>
+    <ion-item
+      v-else
+      :lines="'none'"
+      :class="{background, form, center}">
+      <ion-label position="stacked" v-if="title || subtitle || description">
+        <text-heading :level="2" v-if="subtitle">{{subtitle}}</text-heading>
+        <text-heading :level="1" v-if="title">{{title}}</text-heading>
+        <div class="description" v-if="description">{{description}}</div>
+      </ion-label>
+      <div class="spacer"></div>
+      <ion-label class="inline-label" position="inline" v-if="form && label">{{label}}</ion-label>
+      <slot />
+    </ion-item>
+  </div>
 </template>
 
 <script>
@@ -64,7 +65,6 @@ ion-item {
   --padding-inline-end: 0 !important;
   --border-color: var(--border-color);
   --inner-padding-bottom: 0.5em !important;
-
 }
 ion-item:not(.background) {
   --background: none;
@@ -82,7 +82,9 @@ ion-item.background.form {
   font-size: 18px;
 }
 .lines {
-  --border-width: 2px 0;
+  border: #000 2px solid;
+  border-left: 0;
+  border-right: 0;
   margin-bottom: -2px;
   --box-shadow: none;
 }

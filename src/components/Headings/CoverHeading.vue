@@ -9,7 +9,7 @@
 <script>
 import { defineComponent } from 'vue';
 import ImageMedia from '@/components/Media/ImageMedia.vue'
-import WordPress from '@/services/wordpress'
+import Db from '@/services/db'
 
 export default defineComponent({
   components: { ImageMedia },
@@ -35,7 +35,7 @@ export default defineComponent({
   },
   mounted() {
     this.changeBackgroundColor()
-    WordPress.getUser().then((user) => {
+    Db.getUser().then((user) => {
         this.name = user.firstName
     })
   }

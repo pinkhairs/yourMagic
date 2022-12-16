@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="alert" class="alert"></div>
-    <ion-button @click="router.push(link)">
+    <ion-button @click="() => router.push(link)">
       <image-media :src="icon" />  
     </ion-button>
   </div>

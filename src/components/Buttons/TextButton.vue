@@ -18,5 +18,6 @@ export default defineComponent({
 div {
   background: #ff93e2;
   box-shadow: 0 0 0 2px #000000;
+  text-align: center;
 }
 </style>

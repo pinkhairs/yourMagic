@@ -1,17 +1,17 @@
 <template>
   <div class="block-component">
     <div v-if="cards" class="cards">
-      {{cards}}
+      <CardSpread :cards="cards" />
     </div>
     <div :class="{'text-with-cards': cards, 'text-with-thumbnail': img}">
-      <ion-item-header>
+      <div>
         <text-heading :level="3" v-if="subtitle">{{subtitle}}</text-heading>
         <text-heading :level="2" v-if="title">{{title}}</text-heading>
         <div v-if="description">{{description}}</div>
-      </ion-item-header>
-      <ion-item-content v-if="content">
+      </div>
+      <div v-if="content">
         {{content}}
-      </ion-item-content>
+      </div>
     </div>
     <div v-if="img" class="image" :style="{textAlign: 'center'}">
       <image-media :src="img" alt=""></image-media>
@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import { IonItemContent, IonItemHeader } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import ImageMedia from '../Media/ImageMedia.vue';
 import TextHeading from '../Headings/TextHeading.vue';
+import CardSpread from '@/components/Cards/CardSpread.vue';
 
 export default defineComponent({
-  components: { IonItemContent, IonItemHeader, ImageMedia, TextHeading },
+  components: { ImageMedia, TextHeading, CardSpread },
   props: ['subtitle', 'title', 'content', 'img', 'cards', 'description']
 });
 </script>
@@ -40,10 +40,10 @@ export default defineComponent({
   gap: 15px;
 }
 .cards {
-  width: 20%;
+  width: 72px;
 }
 .text-with-cards {
-  width: 80%;
+  width: calc(100% - 72px);
 }
 .image {
   width: 30%;

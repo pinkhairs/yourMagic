@@ -1,9 +1,11 @@
 <template>
     <your-magic-page>
         <your-magic-content>
+          <div style="display: grid; place-content: center; height: 100%">
             <item-block :center="true">
-                <text-heading :level="2">Logging you out...</text-heading>
+                <text-heading :level="2">See you later!</text-heading>
             </item-block>
+          </div>
         </your-magic-content>
     </your-magic-page>
 </template>
@@ -16,7 +18,7 @@ import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import YourMagicContent from '@/components/Page/YourMagicContent.vue';
 import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
-import WordPress from '@/services/wordpress';
+import Db from '@/services/db';
 
 export default  defineComponent({
   components: {
@@ -26,7 +28,7 @@ export default  defineComponent({
     TextHeading
   },
   mounted() {
-    WordPress.logout()
+    Db.logout()
   }
 });
 </script>

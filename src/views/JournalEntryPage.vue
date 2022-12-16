@@ -5,7 +5,7 @@
         <circle-button @click="() => router.go(-1)" icon="back.png" />
       </item-block>
       <item-block>
-        <text-heading :level="1" title="Tap to shuffle"></text-heading>
+        <text-heading :level="1">{{$route.params.question}}</text-heading>
       </item-block>
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">

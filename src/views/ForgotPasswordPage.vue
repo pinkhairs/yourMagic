@@ -35,7 +35,7 @@ import TextField from '@/components/Fields/TextField.vue'
 import TextHeading from '@/components/Headings/TextHeading.vue'
 import ParagraphText from '@/components/Text/ParagraphText.vue'
 import CircleButton from '@/components/Buttons/CircleButton.vue'
-import WordPress from '@/services/wordpress'
+import Db from '@/services/db'
 
 export default  defineComponent({
   data() {
@@ -61,7 +61,7 @@ setup() {
 },
 methods: {
     resetPw() {
-      WordPress.sendPasswordResetLink({email: this.email}).then((resetPw) => {
+      Db.sendPasswordResetLink({email: this.email}).then((resetPw) => {
         if (resetPw) {
           this.errors = 'Check your email inbox.'
         } else {

@@ -20,7 +20,7 @@ import SignupPage from '@/views/SignupPage.vue'
 import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue';
 import LogoutPage from '@/views/LogoutPage.vue';
 import AccountPage from '@/views/AccountPage.vue';
-import WordPress from '@/services/wordpress'
+import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -56,23 +56,29 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/new-reading',
-    component: NewReadingPage
+    name: 'new-reading',
+    component: NewReadingPage,
+    props: true
   },
   {
-    path: '/shuffle',
-    component: ShufflePage
+    path: '/shuffle/:question/:spread',
+    component: ShufflePage,
+    name: 'shuffle'
   },
   {
-    path: '/reading',
-    component: ReadingPage
+    path: '/reading/:question/:spread',
+    component: ReadingPage,
+    name: 'reading'
   },
   {
     path: '/journal-entry',
-    component: JournalEntryPage
+    component: JournalEntryPage,
+    name: 'journal-entry'
   },
   {
-    path: '/card-meaning',
-    component: CardMeaningPage
+    path: '/card-meaning/:card-name',
+    component: CardMeaningPage,
+    name: 'card-meaning'
   },
   {
     path: '/deck',
@@ -138,15 +144,15 @@ router.beforeEach((to, from, next) => {
   } else {
     storage.get('user').then((user) => {
       if (user && user.token) {
-        WordPress.getUser().then((user) => {
+        Db.getUser().then((user) => {
           if (user) {
             next()
           } else {
-            next({path: '/onboarding'})
+            Db.logout()
           }
         })
       } else {
-        next({path: '/onboarding'})
+        Db.logout()
       }
     });
   }

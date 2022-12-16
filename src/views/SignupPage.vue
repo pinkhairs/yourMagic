@@ -41,7 +41,7 @@ import TextField from '@/components/Fields/TextField.vue'
 import TextHeading from '@/components/Headings/TextHeading.vue'
 import ParagraphText from '@/components/Text/ParagraphText.vue'
 import CircleButton from '@/components/Buttons/CircleButton.vue'
-import WordPress from '@/services/wordpress'
+import Db from '@/services/db'
 
 export default  defineComponent({
   components: {
@@ -69,7 +69,7 @@ setup() {
 },
 methods: {
     signup() {
-      WordPress.register({
+      Db.register({
         firstName: this.firstName,
         username: this.email,
         email: this.email,

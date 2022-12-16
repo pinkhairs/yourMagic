@@ -1,7 +1,7 @@
 <template>
   <block-component
-    title="Double Time"
-    description="Constrasting factors"
+    :title="title"
+    :description="description"
     :cards="cards"
   ></block-component>
 </template>

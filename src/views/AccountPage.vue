@@ -40,7 +40,8 @@ import TextButton from '@/components/Buttons/TextButton.vue'
 import TextField from '@/components/Fields/TextField.vue'
 import TextHeading from '@/components/Headings/TextHeading.vue'
 import CircleButton from '@/components/Buttons/CircleButton.vue'
-import WordPress from '@/services/wordpress'
+import Db from '@/services/db'
+import ParagraphText from '@/components/Text/ParagraphText.vue'
 import { Storage } from '@ionic/storage'
 
 export default  defineComponent({
@@ -52,7 +53,8 @@ export default  defineComponent({
     TextButton,
     TextField,
     TextHeading,
-    CircleButton
+    CircleButton,
+    ParagraphText
 },
 data() {
   return {
@@ -61,7 +63,8 @@ data() {
     email: '',
     password: '',
     token: '',
-    errors: ''
+    errors: '',
+    id: 0
   }
 },
 setup() {
@@ -69,18 +72,19 @@ setup() {
     return { router };
 },
 mounted() {
-    WordPress.getUser().then((user) => {
+    Db.getUser().then((user) => {
+      console.log({user})
         this.firstName = user.firstName
         this.username = user.username
         this.email = user.email
         this.password = user.password
         this.token = user.token
+        this.id = user.id
     })
 },
 methods: {
     updateAccount() {
-      WordPress.updateAccount({firstName: this.firstName, username: this.username, password: this.password, token: this.token, email: this.email}).then((updateAccount) => {
-        console.log({updateAccount})
+      Db.updateAccount({firstName: this.firstName, username: this.username, password: this.password, token: this.token, email: this.email, id: this.id}).then((updateAccount) => {
         if (updateAccount) {
           this.errors = 'Successfully saved.'
         } else {
