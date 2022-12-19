@@ -23,6 +23,7 @@
     "@ionic/vue-router": "^6.0.0",
     "@mukurowz/v-calendar": "^3.0.3-alpha.3",
     "core-js": "^3.6.5",
+    "pinia": "^2.0.28",
     "util": "^0.12.5",
     "uuidv4": "^6.2.13",
     "v-calendar": "^3.0.0-alpha.8",

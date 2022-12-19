@@ -6,9 +6,18 @@
       </item-block>
       <div style="height: 100vh; display: grid; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
         <div class="grid" :style="'grid-template-columns: '+columns.join(' ')+'; grid-template-rows:'+rows.join(' ')">
-          <div @click="() => { active++; router.push({name: 'card-meaning', params: {card: cards[i]}}) }" v-for="(position, i) in positions" :key="position.id" :class="i === active ? 'active card' : 'card'"
+          <div @click="() => { if (flipped[i]) {router.push({name: 'card-meaning', params:{card: cards[i]}})} else {active++; flipped[i] = true} }" v-for="(position, i) in positions" :key="position.id" :class="i === active ? 'active card' : 'card'"
           :style="'grid-column-start: column-'+position.column+'; grid-row-start: row-'+position.row">
-
+            <div :class="flipped[i] ? 'flip-container flipped' : 'flip-container'">
+              <div class="flipper">
+                <div class="back">
+                  <image-media :src="'cards/'+cards[i]+'.png'" />
+                </div>
+                <div class="front">
+                  <image-media src="card-back.png" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,6 +38,7 @@ import CircleButton from '@/components/Buttons/CircleButton.vue';
 import { useRouter } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
+import ImageMedia from '@/components/Media/ImageMedia.vue';
 import Db from '@/services/db';
 
 export default  defineComponent({
@@ -39,7 +49,7 @@ export default  defineComponent({
       positions: [],
       columns: [],
       rows: [],
-      flipped: [] as number[],
+      flipped: [] as boolean[],
       active: 0
     };
   },
@@ -48,6 +58,7 @@ export default  defineComponent({
     YourMagicPage,
     CircleButton,
     ItemBlock,
+    ImageMedia,
     YourMagicContent
 },
   setup() {
@@ -70,7 +81,7 @@ export default  defineComponent({
     },
     chooseCards() {
       this.positions.forEach(() => {
-        this.flipped.push(0)
+        this.flipped.push(false)
         this.cards.push(this.getRandomCard())
       })
     },
@@ -135,22 +146,16 @@ export default  defineComponent({
 
 <style scoped>
 .grid {
-    gap: 6px;
+    gap: 20px;
     display: grid;
     padding: 0 1em;
     margin-top: auto;
     margin-bottom: auto;
 }
 .card {
-    background: url('@/assets/images/card-back.png');
-    border-radius: 6px;
-    text-align: center;
-    aspect-ratio: 1/1.5;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 100%;
-    box-shadow: 0 0 40px -3px rgba(255,255,255,.5);
-    animation: slideInFromLeft 2s;
+  position: relative;
+  text-align: center;
+  animation: slideInFromLeft 2s;
 }
 .active {
   animation: slideInFromLeft 2s, glow 1s infinite alternate; 
@@ -172,5 +177,45 @@ export default  defineComponent({
     transform: translateX(0);
     opacity: 1;
   }
+}/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+  aspect-ratio: 2/3;
+}
+	/* flip the pane when hovered */
+	.flip-container.flipped .flipper {
+		transform: rotateY(180deg);
+	}
+
+/* flip speed goes here */
+.flipper {
+	transition: 1s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.front img, .back img {
+  width: 100%;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
 }
 </style>

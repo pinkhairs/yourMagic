@@ -70,7 +70,6 @@ export default  defineComponent({
   right:0;
   top:40px;
   box-shadow: 0 0 64px -16px rgba(255,255,255,0.25), inset 0 0 64px -16px rgba(255,255,255,0.25);
-  border-radius: 15px; 
   display:flex;
 }
 
