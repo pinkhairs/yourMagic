@@ -4,7 +4,7 @@
       <item-block>
         <circle-button @click="() => router.replace('/')" icon="back.png" />
       </item-block>
-      <div style="height: 100vh; display: grid; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+      <div style="height: 100vh; display: grid; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" :class="cards.length === 1 ? 'single-card': ''">
         <div class="grid" :style="'grid-template-columns: '+columns.join(' ')+'; grid-template-rows:'+rows.join(' ')">
           <div @click="() => { if (flipped[i]) {router.push({name: 'card-meaning', params:{card: cards[i]}})} else {active++; flipped[i] = true} }" v-for="(position, i) in positions" :key="position.id" :class="i === active ? 'active card' : 'card'"
           :style="'grid-column-start: column-'+position.column+'; grid-row-start: row-'+position.row">
@@ -40,6 +40,7 @@ import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
 import ImageMedia from '@/components/Media/ImageMedia.vue';
 import Db from '@/services/db';
+import { useReadingsStore } from '@/stores/readings';
 
 export default  defineComponent({
   name: 'ReadingPage',
@@ -63,7 +64,8 @@ export default  defineComponent({
 },
   setup() {
     const router = useRouter();
-    return { router };
+    const store = useReadingsStore();
+    return { router, store };
   },
   mounted() {
     this.getSpreadData()
@@ -74,10 +76,8 @@ export default  defineComponent({
         this.positions = response.cards
         this.layOutSpread()
         this.chooseCards()
+        this.store.addCardsToReading(this.$route.params.question, this.cards)
       });
-    },
-    getQuestion(questionId: any) {
-      return
     },
     chooseCards() {
       this.positions.forEach(() => {
@@ -151,6 +151,9 @@ export default  defineComponent({
     padding: 0 1em;
     margin-top: auto;
     margin-bottom: auto;
+}
+.single-card {
+  padding: 0 2em;
 }
 .card {
   position: relative;

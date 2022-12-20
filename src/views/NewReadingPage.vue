@@ -35,6 +35,7 @@ import SpeechBubbleText from '@/components/Text/SpeechBubbleText.vue';
 import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
 import Db from '@/services/db';
+import { useReadingsStore } from '@/stores/readings'
 
 export default  defineComponent({
   name: 'NewReadingPage',
@@ -56,7 +57,8 @@ export default  defineComponent({
   },
   setup() {
     const router = useRouter()
-    return { router }
+    const store = useReadingsStore()
+    return { router, store }
   },
   mounted() {
     this.getSpreads()
@@ -68,10 +70,9 @@ export default  defineComponent({
       });
     },
     setQuestion(question: any, spread: any) {
-      const q = {question, id: Date.now()}
-      Db.addQuestion(q).then(() => {
-        this.router.push({name: 'shuffle', params: {question: q.id, spread: spread}})
-      })
+      const q = {question, id: Date.now(), spread, cards: []}
+      this.store.addReading(q)
+      this.router.push({name: 'shuffle', params: {question: q.id, spread}})
     }
   }
 });

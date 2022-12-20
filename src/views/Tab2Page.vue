@@ -17,6 +17,7 @@ import ItemBlock from '@/components/Blocks/ItemBlock.vue';
 import YourMagicPage from '../components/Page/YourMagicPage.vue';
 import StackList from '../components/Lists/StackList.vue';
 import YourMagicContent from '@/components/Page/YourMagicContent.vue';
+import Db from '@/services/db';
 
 export default  defineComponent({
   name: 'Tab2Page',
@@ -30,7 +31,10 @@ export default  defineComponent({
     YourMagicPage,
     StackList,
     YourMagicContent
-}
+  },
+  mounted() {
+    console.log(Db.loadAllCategories())
+  }
 });
 </script>
 

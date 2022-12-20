@@ -13,7 +13,7 @@
           <fake-door-button />
           <div style="height: 15px"></div>
         </item-block>
-        <item-block :background="true" link="/content">
+        <item-block :background="true" :link="{name: 'shuffle', params: {question: getNowDate, spread: 46}}">
         <article-block title="Tap to pull..." subtitle="Card of the day" content="" img="card-back.png" />
         </item-block>
       </stack-list>
@@ -50,6 +50,11 @@ export default  defineComponent({
     StackList,
     CircleButton,
     YourMagicContent
+  },
+  methods: {
+    getNowDate() {
+      return Date.now();
+    }
   }
 });
 </script>

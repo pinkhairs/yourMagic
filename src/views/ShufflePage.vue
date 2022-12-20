@@ -1,5 +1,5 @@
 <template>
-  <your-magic-page :time="time">
+  <your-magic-page>
     <your-magic-content>
       <item-block>
         <circle-button @click="() => router.go(-1)" icon="back.png" />
@@ -8,15 +8,16 @@
         <text-heading :level="1" title="Tap to shuffle"></text-heading>
       </item-block>
       <item-block>
-        <div id="shuffle">
-          <div class="cardanimation" id="zero"><span></span></div>
-          <div class="cardanimation" id="one"><span class="red"></span></div>
-          <div class="cardanimation" id="two"><span></span></div>
-          <div class="cardanimation" id="three"><span></span></div>
-          <div class="cardanimation" id="four"><span></span></div>
-          <div class="cardanimation" id="five"><span></span></div>
+        <div id="shuffle" @click="reShuffle">
+          <div :class="shuffle ? 'zero cardanimation' : 'cardanimation'"><span></span></div>
+          <div :class="shuffle ? 'one cardanimation' : 'cardanimation'"><span></span></div>
+          <div :class="shuffle ? 'two cardanimation' : 'cardanimation'"><span></span></div>
+          <div :class="shuffle ? 'three cardanimation' : 'cardanimation'"><span></span></div>
+          <div :class="shuffle ? 'four cardanimation' : 'cardanimation'"><span></span></div>
+          <div :class="shuffle ? 'five cardanimation' : 'cardanimation'"><span></span></div>
         </div>
       </item-block>
+      <div style="text-align: center">Tap to shuffle again.</div>
     </your-magic-content>
     <ion-footer>
       <text-button expand="full" @click="() => router.push({name: 'reading', params: { question: $route.params.question, spread: $route.params.spread }})" text="Ready &rarr;" />
@@ -39,7 +40,7 @@ export default  defineComponent({
   name: 'ShufflePage',
   data() {
     return {
-      time: 'evening',
+      shuffle: true,
     };
   },
   components: {
@@ -55,6 +56,14 @@ export default  defineComponent({
   setup() {
     const router = useRouter();
     return { router };
+  },
+  methods: {
+    reShuffle() {
+      this.shuffle = false;
+      setTimeout(() => {
+        this.shuffle = true
+      }, 0)
+    }
   }
 });
 </script>
@@ -71,6 +80,7 @@ export default  defineComponent({
   top:40px;
   box-shadow: 0 0 64px -16px rgba(255,255,255,0.25), inset 0 0 64px -16px rgba(255,255,255,0.25);
   display:flex;
+  border-radius: 4px;
 }
 
 span{
@@ -79,14 +89,14 @@ span{
   align-items:center;
 }
 
-#one{
+.one{
   animation-name: shuffle; 
   animation-duration: 1s; 
   animation-iteration-count:5;  
   z-index:5;
 }
 
-#two{
+.two{
   animation-name: shuffletwo; 
   animation-duration: 1s; 
   animation-iteration-count:5;  
@@ -94,7 +104,7 @@ span{
   z-index:4;
 }
 
-#three{
+.three{
   animation-name: shufflethree; 
   animation-duration: 1s; 
   animation-iteration-count:5;  
@@ -102,7 +112,7 @@ span{
   z-index:3;
 }
 
-#four{
+.four{
   animation-name: shufflefour; 
   animation-duration: 1s; 
   animation-iteration-count:5;  
@@ -110,7 +120,7 @@ span{
   z-index:4;
 }
 
-#five{
+.five{
   animation-name: shufflefive; 
   animation-duration: 1s; 
   animation-iteration-count:5;  

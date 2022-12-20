@@ -4,6 +4,9 @@ import router from './router';
 
 import { IonicVue } from '@ionic/vue';
 
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -40,7 +43,8 @@ const getTheTimeOfDay = () => {
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(pinia);
   
 router.isReady().then(() => {
   StatusBar.setOverlaysWebView({ overlay: true })

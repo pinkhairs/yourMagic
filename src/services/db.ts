@@ -67,9 +67,14 @@ export default new class {
             return response
         })
     }
+    loadAllCategories() {
+        return this.request('wp/v2/library/get', null, this.userToken, 'GET').then((response) => {
+            console.log({response})
+            return response
+        })
+    }
     getIndividualSpread(data: any) {
         return this.request('wp/v2/spreads/get/individual', data, this.userToken).then((response) => {
-            console.log({response})
             return response
         })
     }
