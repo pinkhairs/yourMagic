@@ -5,12 +5,12 @@
         <div class="top-row">
           <item-block title="Journal" />
           <div class="buttons">
-            <circle-button icon="list.png" />
+            <circle-button @click="calendar = !calendar" icon="list.png" />
             <circle-button icon="hashtag.png" />
           </div>
         </div>
         <item-block>
-          <calendar-month />
+          <calendar-month v-if="calendar" />
         </item-block>
       </stack-list>
     </your-magic-content>
@@ -30,7 +30,7 @@ export default  defineComponent({
   name: 'Tab3Page',
   data() {
     return {
-      time: 'evening'
+      calendar: false
     }
   },
   components: {
