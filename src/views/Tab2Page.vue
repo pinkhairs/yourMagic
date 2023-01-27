@@ -3,9 +3,7 @@
     <your-magic-content>
       <stack-list>
         <item-block title="Library" />
-        <item-block :background="true" link="/new-reading" subtitle="One two three" />
-        <item-block :background="true" link="/new-reading" subtitle="Question #2" />
-        <item-block :background="true" link="/new-reading" subtitle="Tarot question" />
+        <item-block :key="i" v-for="(category, i) in categories" :background="true" link="/content" :subtitle="category.title" />
       </stack-list>
     </your-magic-content>
   </your-magic-page>
@@ -23,7 +21,7 @@ export default  defineComponent({
   name: 'Tab2Page',
   data() {
     return {
-      time: 'morning'
+      categories: []
     }
   },
   components: {
@@ -33,7 +31,9 @@ export default  defineComponent({
     YourMagicContent
   },
   mounted() {
-    console.log(Db.loadAllCategories())
+    Db.loadAllCategories().then((results: any) => {
+      this.categories = results.categories[0].subcategories;
+    })
   }
 });
 </script>
