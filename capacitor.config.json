@@ -1,5 +1,5 @@
 {
-	"appId": "com.yourmagic.app",
+	"appId": "com.thisisyourmagic.app",
 	"appName": "yourMagic",
 	"webDir": "dist",
 	"bundledWebRuntime": false
