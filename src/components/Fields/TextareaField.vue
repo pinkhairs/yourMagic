@@ -1,5 +1,5 @@
 <template>
-    <ion-textarea :autofocus="autofocus" placeholder="• • •"></ion-textarea>
+  <ion-textarea :autofocus="autofocus" placeholder="• • •"></ion-textarea>
 </template>
 
 <script>

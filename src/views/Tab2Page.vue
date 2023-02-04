@@ -3,6 +3,7 @@
     <your-magic-content>
       <stack-list>
         <item-block title="Library" />
+        <item-block :background="true" link="/content" subtitle="Decks" />
         <item-block :key="i" v-for="(category, i) in categories" :background="true" link="/content" :subtitle="category.title" />
       </stack-list>
     </your-magic-content>

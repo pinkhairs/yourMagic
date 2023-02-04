@@ -55,7 +55,8 @@ export default  defineComponent({
   props: ['question', 'spread'],
   setup() {
     const router = useRouter();
-    return { router };
+    const route = useRoute();
+    return { router, route };
   },
   methods: {
     reShuffle() {

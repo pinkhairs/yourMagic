@@ -13,6 +13,7 @@ import SettingsPage from '@/views/SettingsPage.vue'
 import ContentPage from '@/views/ContentPage.vue'
 import NewDeckPage from '@/views/NewDeckPage.vue'
 import NotificationsPage from '@/views/NotificationsPage.vue'
+import NotificationsSettingsPage from '@/views/NotificationsSettingsPage.vue'
 import OnboardingPage from '@/views/OnboardingPage.vue'
 import { Storage } from '@ionic/storage';
 import LoginPage from '@/views/LoginPage.vue'
@@ -20,6 +21,7 @@ import SignupPage from '@/views/SignupPage.vue'
 import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue';
 import LogoutPage from '@/views/LogoutPage.vue';
 import AccountPage from '@/views/AccountPage.vue';
+import SubscriptionPage from '@/views/SubscriptionPage.vue';
 import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
 
@@ -71,14 +73,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'reading'
   },
   {
-    path: '/journal-entry',
+    path: '/journal-entry/:question/:spread',
+    name: 'journal-entry',
     component: JournalEntryPage,
-    name: 'journal-entry'
+    props: true
   },
   {
-    path: '/card-meaning/:card-name',
+    path: '/card-meaning/:deck/:card',
+    name: 'card-meaning',
     component: CardMeaningPage,
-    name: 'card-meaning'
+    props: true
   },
   {
     path: '/deck',
@@ -99,6 +103,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/notifications',
     component: NotificationsPage
+  },
+  {
+    path: '/notifications-settings',
+    component: NotificationsSettingsPage
   },
   {
     path: '/onboarding',
@@ -123,6 +131,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/account',
     component: AccountPage
+  },
+  {
+    path: '/subscription',
+    component: SubscriptionPage
   }
 ]
 

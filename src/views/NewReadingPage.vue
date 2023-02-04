@@ -36,6 +36,7 @@ import SpreadBlock from '@/components/Blocks/SpreadBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
 import Db from '@/services/db';
 import { useReadingsStore } from '@/stores/readings'
+import { v4 as uuidv4 } from 'uuid';
 
 export default  defineComponent({
   name: 'NewReadingPage',
@@ -69,9 +70,9 @@ export default  defineComponent({
         this.spreads = response.spreads
       });
     },
-    setQuestion(question: any, spread: any) {
-      const q = {question, id: Date.now(), spread, cards: []}
-      this.store.addReading(q)
+    setQuestion(question: string, spread: any) {
+      const q = {question, id: uuidv4(), spread, cards: []}
+      this.store.addReading(q as any)
       this.router.push({name: 'shuffle', params: {question: q.id, spread}})
     }
   }

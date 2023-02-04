@@ -7,7 +7,7 @@
         </item-block>
         <item-block title="Settings" />
         <item-block :background="true" link="/account" subtitle="Account" />
-        <item-block :background="true" link="/notifications" subtitle="Notifications" />
+        <item-block :background="true" link="/notifications-settings" subtitle="Notifications" />
         <item-block :background="true" link="/subscription" subtitle="Your Subscription" />
         <item-block link="/logout" subtitle="Logout" />
       </stack-list>

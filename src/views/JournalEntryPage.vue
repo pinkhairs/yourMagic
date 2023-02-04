@@ -1,54 +1,82 @@
 <template>
-  <your-magic-page :time="time">
+  <your-magic-page>
     <your-magic-content>
       <item-block>
         <circle-button @click="() => router.go(-1)" icon="back.png" />
       </item-block>
-      <item-block>
-        <text-heading :level="1">{{$route.params.question}}</text-heading>
+      <item-block :center="true">
+        <text-heading :level="3">{{title}}</text-heading>
       </item-block>
+      <reading-block style="transform: scale(0.5); transform-origin: top;" />
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
       <item-block lines="full" :form="true" :background="true">
-        <textarea-field></textarea-field>
+        <circle-button slot="end" icon="star.png" />
+        <textarea-field v-model="entry" :rows="6"></textarea-field>
+        <div v-html="entry.replace(/\n/g, '<br>')" ref="entryHTML" style="display: none"></div>
       </item-block>
-      <text-button expand="full" @click="() => router.push('/reading')" text="Done" />
+      <text-button width="full" @click="saveReading()" text="Save" />
     </ion-footer>
   </your-magic-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, toRaw } from 'vue';
 import { IonFooter } from '@ionic/vue';
 import TextHeading from '@/components/Headings/TextHeading.vue';
 import YourMagicPage from '@/components/Page/YourMagicPage.vue';
 import CircleButton from '@/components/Buttons/CircleButton.vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import ItemBlock from '../components/Blocks/ItemBlock.vue';
 import YourMagicContent from '../components/Page/YourMagicContent.vue';
 import TextareaField from '@/components/Fields/TextareaField.vue';
-import TextButton from '@/components/Buttons/TextButton.vue'
+import ReadingBlock from '@/components/Blocks/ReadingBlock.vue';
+import TextButton from '@/components/Buttons/TextButton.vue';
+import Db from '@/services/db';
+import { useReadingsStore } from '@/stores/readings';
 
 export default  defineComponent({
   name: 'ReadingPage',
   data() {
     return {
-      time: 'evening',
+      guid: '',
+      entry: '',
+      title: ''
     };
   },
   components: {
     IonFooter,
     TextHeading,
     YourMagicPage,
+    TextButton,
     CircleButton,
     ItemBlock,
     YourMagicContent,
     TextareaField,
-    TextButton
-},
+    ReadingBlock
+  },
   setup() {
     const router = useRouter();
-    return { router };
+    const route = useRoute();
+    return { router, route };
+  },
+  mounted() {
+    const readings = toRaw(useReadingsStore().readings)
+    const reading = toRaw(readings.find((reading: any) => reading.id === this.$route.params.question))
+    this.title = reading.question
+    this.guid = reading.id
+  },
+  methods: {
+    saveReading() {
+      const user = Db.getUser().then((user) => {
+        Db.saveReading({
+          guid: this.guid,
+          title: this.title,
+          content: (this.$refs['entryHTML'] as any).innerHTML,
+          user_id: user.id
+        })
+      })
+    }
   }
 });
 </script>

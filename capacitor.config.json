@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "com.yourmagic.app",
 	"appName": "yourMagic",
 	"webDir": "dist",
 	"bundledWebRuntime": false

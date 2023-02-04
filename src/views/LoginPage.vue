@@ -72,7 +72,7 @@ methods: {
         username: this.email,
         password: this.password
       }).then((login) => {
-        if (login) {
+        if (login.success) {
           this.$router.replace('/')
         } else {
           this.errors = 'Invalid username or password'
