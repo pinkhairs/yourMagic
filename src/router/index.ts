@@ -24,8 +24,9 @@ import AccountPage from '@/views/AccountPage.vue';
 import SubscriptionPage from '@/views/SubscriptionPage.vue';
 import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
-import { useAuth0 } from "@auth0/auth0-vue";
-const { user } = useAuth0();
+import { useAuth0 } from "@auth0/auth0-vue"
+const { user } = useAuth0()
+
 console.log({user})
 
 const routes: Array<RouteRecordRaw> = [
