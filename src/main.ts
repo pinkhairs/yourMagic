@@ -45,7 +45,7 @@ const getTheTimeOfDay = () => {
 }
 
 // Build the URL that Auth0 should redirect back to
-const redirect_uri = `${config.appId}://dev-140amymbq0zvj8li.us.auth0.com/capacitor/${config.appId}/callback`;
+const redirect_uri = `https://your-magic-cfad2e.netlify.app/callback`;
 
 const app = createApp(App)
   .use(IonicVue)

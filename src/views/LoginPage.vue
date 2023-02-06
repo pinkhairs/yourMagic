@@ -11,17 +11,11 @@ export default  defineComponent({
   setup() {
     const { loginWithRedirect } = useAuth0();
 
-    const login = async () => {
-      await loginWithRedirect({
-        openUrl: (url: string) =>
-          Browser.open({
-            url,
-            windowName: "_self",
-          }),
-      });
-    };
-
-    return { login };
+    loginWithRedirect({
+      appState: {
+        target: "/tabs/tab-1",
+      },
+    });
   }
 });
 </script>
