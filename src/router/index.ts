@@ -25,7 +25,7 @@ import SubscriptionPage from '@/views/SubscriptionPage.vue';
 import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
 import { useAuth0 } from "@auth0/auth0-vue"
-const { user, isLoading, isAuthenticated } = useAuth0()
+const { isLoading, isAuthenticated } = useAuth0()
 
 const routes: Array<RouteRecordRaw> = [
   {
