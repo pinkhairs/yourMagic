@@ -27,8 +27,6 @@ import Tab1Page from '@/views/Tab1Page.vue'
 import { useAuth0 } from "@auth0/auth0-vue"
 const { user } = useAuth0()
 
-console.log({user})
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -158,11 +156,7 @@ router.beforeEach((to, from, next) => {
   if (outsidePages.includes(to.path)) {
     next()
   } else {
-    if (user) {
-      next()
-    } else {
-      Db.logout()
-    }
+    next()
   }
 })
 
