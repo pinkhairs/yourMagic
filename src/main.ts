@@ -46,7 +46,7 @@ const getTheTimeOfDay = () => {
 
 // Build the URL that Auth0 should redirect back to
 const redirect_uri = `${config.appId}://dev-140amymbq0zvj8li.us.auth0.com/capacitor/${config.appId}/callback`;
-console.log({redirect_uri})
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
@@ -55,7 +55,7 @@ const app = createApp(App)
 app.use(
   createAuth0({
     domain: "dev-140amymbq0zvj8li.us.auth0.com",
-    clientId: "rdAcYvm9e7DKNjlvQmRaO5q079GfOyBZ",
+    clientId: "fkwYscwPcJfYgyY1JyfO6h9Cj0P5a3Gt",
     authorizationParams: {
       redirect_uri
     }
