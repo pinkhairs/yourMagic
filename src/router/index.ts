@@ -24,6 +24,8 @@ import AccountPage from '@/views/AccountPage.vue';
 import SubscriptionPage from '@/views/SubscriptionPage.vue';
 import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
+import { useAuth0 } from "@auth0/auth0-vue";
+const { user } = useAuth0();
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -154,19 +156,11 @@ router.beforeEach((to, from, next) => {
   if (outsidePages.includes(to.path)) {
     next()
   } else {
-    storage.get('user').then((user) => {
-      if (user && user.token) {
-        Db.getUser().then((user) => {
-          if (user) {
-            next()
-          } else {
-            Db.logout()
-          }
-        })
-      } else {
-        Db.logout()
-      }
-    });
+    if (user) {
+      next()
+    } else {
+      Db.logout()
+    }
   }
 })
 
