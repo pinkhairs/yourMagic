@@ -16,7 +16,7 @@ export default new class {
             }
         });
     }
-    async request(path: string, data: any = {}, token = '', environmentToken = false, requestMethod = 'POST') {
+    async request(path: string, data: any = {}, token = '', requestMethod = 'POST') {
         let headers: any = {'Content-Type': 'application/json'}
         if (token) {
             headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
@@ -29,10 +29,10 @@ export default new class {
         return response.json()
     }
     getToken(data: object) {
-        return this.request('jwt-auth/v1/token', data, this.environmentToken, true).then((response) => {
+        return this.request('jwt-auth/v1/token', data).then((response) => {
             storage.set('preferences', { notifications: true }) //TODO make pull setting from wp
             return storage.set('user', response.data).then(() => {
-                return response.token
+                return true
             })
         }).catch(() => {
             this.logout()
@@ -42,7 +42,7 @@ export default new class {
         return storage.get('user')
     }
     register(data: object) {
-        return this.request('wp/v2/users/register', data, this.environmentToken, true).then((response) => {
+        return this.request('wp/v2/users/register', data).then((response) => {
             return storage.set('preferences', { notifications: true })
         })
     }
@@ -80,7 +80,7 @@ export default new class {
         })
     }
     sendPasswordResetLink(data: any) {
-        return this.request('wp/v2/users/forgot-password', data, this.environmentToken, true).then((response) => {
+        return this.request('wp/v2/users/forgot-password', data).then((response) => {
             return response.code === 200
         })
     }
@@ -90,12 +90,12 @@ export default new class {
         })
     }
     loadAllSpreads() {
-        return this.request('wp/v2/spreads/get', null, this.userToken, false, 'GET').then((response) => {
+        return this.request('wp/v2/spreads/get', null, this.userToken, 'GET').then((response) => {
             return response
         })
     }
     loadAllCategories() {
-        return this.request('wp/v2/library/get', null, this.userToken, false, 'GET').then((response) => {
+        return this.request('wp/v2/library/get', null, this.userToken, 'GET').then((response) => {
             return response
         })
     }
