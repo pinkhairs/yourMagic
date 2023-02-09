@@ -1,4 +1,3 @@
-import { environment } from "@/environments/environment";
 import router from "@/router";
 import { Storage } from "@ionic/storage";
 
@@ -6,7 +5,7 @@ const storage = new Storage()
 
 export default new class {
     private userToken = '';
-    private environmentToken = environment.jwt
+    private environmentToken = process.env.JWTAPIKEY
 
     constructor() {
         storage.create()
@@ -21,7 +20,7 @@ export default new class {
         if (token) {
             headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
         }
-        const response = await fetch(environment.apiUrl+path, {
+        const response = await fetch(process.env.DBURL+path, {
             method: requestMethod,
             headers,
             body: data ? JSON.stringify(data) : null
