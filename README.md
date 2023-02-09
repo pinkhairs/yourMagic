@@ -1,6 +1,6 @@
 # yourMagic
 
-*Note: Backend programming is not complete!*
+*Note: Backend programming in progress to completion!*
 
 `npm i`
 
