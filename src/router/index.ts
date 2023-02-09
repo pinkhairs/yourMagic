@@ -13,6 +13,7 @@ import SettingsPage from '@/views/SettingsPage.vue'
 import ContentPage from '@/views/ContentPage.vue'
 import NewDeckPage from '@/views/NewDeckPage.vue'
 import NotificationsPage from '@/views/NotificationsPage.vue'
+import SubscriptionPage from '@/views/SubscriptionPage.vue'
 import NotificationsSettingsPage from '@/views/NotificationsSettingsPage.vue'
 import OnboardingPage from '@/views/OnboardingPage.vue'
 import { Storage } from '@ionic/storage';
@@ -21,11 +22,8 @@ import SignupPage from '@/views/SignupPage.vue'
 import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue';
 import LogoutPage from '@/views/LogoutPage.vue';
 import AccountPage from '@/views/AccountPage.vue';
-import SubscriptionPage from '@/views/SubscriptionPage.vue';
 import Db from '@/services/db'
 import Tab1Page from '@/views/Tab1Page.vue'
-import { useAuth0 } from "@auth0/auth0-vue"
-const { isLoading, isAuthenticated } = useAuth0()
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -82,8 +80,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/card-meaning/:deck/:card',
-    name: 'card-meaning',
     component: CardMeaningPage,
+    name: 'card-meaning',
     props: true
   },
   {
@@ -111,6 +109,10 @@ const routes: Array<RouteRecordRaw> = [
     component: NotificationsSettingsPage
   },
   {
+    path: '/subscription',
+    component: SubscriptionPage
+  },
+  {
     path: '/onboarding',
     component: OnboardingPage
   },
@@ -133,10 +135,6 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/account',
     component: AccountPage
-  },
-  {
-    path: '/subscription',
-    component: SubscriptionPage
   }
 ]
 
@@ -156,11 +154,19 @@ router.beforeEach((to, from, next) => {
   if (outsidePages.includes(to.path)) {
     next()
   } else {
-    if (!isLoading && isAuthenticated) {
-      next()
-    } else {
-      Db.logout()
-    }
+    storage.get('user').then((user) => {
+      if (user && user.token) {
+        Db.getUser().then((user) => {
+          if (user) {
+            next()
+          } else {
+            Db.logout()
+          }
+        })
+      } else {
+        Db.logout()
+      }
+    });
   }
 })
 
