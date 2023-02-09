@@ -11,8 +11,8 @@
     </your-magic-content>
     <ion-footer class="ion-no-border ion-transparent">
       <item-block lines="full" :form="true" :background="true">
-        <circle-button slot="end" icon="star.png" />
-        <textarea-field v-model="entry" :rows="6"></textarea-field>
+        <circle-button slot="end" @click="getAiText()" :icon="processingAi ? 'dots.png' : 'star.png'" />
+        <textarea-field :autoGrow="true" v-model="entry" :rows="6"></textarea-field>
         <div v-html="entry.replace(/\n/g, '<br>')" ref="entryHTML" style="display: none"></div>
       </item-block>
       <text-button width="full" @click="saveReading()" text="Save" />
@@ -34,6 +34,9 @@ import ReadingBlock from '@/components/Blocks/ReadingBlock.vue';
 import TextButton from '@/components/Buttons/TextButton.vue';
 import Db from '@/services/db';
 import { useReadingsStore } from '@/stores/readings';
+import Ai from '@/services/ai'
+import { Configuration, OpenAIApi } from 'openai'
+
 
 export default  defineComponent({
   name: 'ReadingPage',
@@ -41,7 +44,8 @@ export default  defineComponent({
     return {
       guid: '',
       entry: '',
-      title: ''
+      title: '',
+      processingAi: false
     };
   },
   components: {
@@ -76,6 +80,24 @@ export default  defineComponent({
           user_id: user.id
         })
       })
+    },
+    getAiText() {
+      this.processingAi = true
+      const prompt = 'Write a divinatory tarot prediction for a relationship inquiry. The querent asked, "Are we still friends?" The prediction should have mention someone being hurt (because the Past is represented by the Three of Swords), defensiveness (because the Seven of Wands is in the Present position), and a hopeful outcome (because the Future is represented by the Ten of Cups). End on a positive note, and remind the querent of their ability to persevere in any situation, as well as their character strengths of generosity and exuberance. The querent is asking for 1 sentence to prompt their thought; you must answer in a short, complete sentence. Answer in the first person using the word "I," as if you were the querent analyzing this reading for their own journal entry. This is the starting text that the querent has filled out: '+this.entry
+      const configuration = new Configuration({
+        apiKey: Ai.apiKey,
+      });
+      const openai = new OpenAIApi(configuration);
+      openai.createCompletion({
+        model: "text-davinci-003",
+        prompt,
+        temperature: 1,
+        best_of: 1,
+        max_tokens: 24
+      }).then((response: any) => {
+        this.processingAi = false
+        this.entry += response.data.choices[0].text
+      });
     }
   }
 });

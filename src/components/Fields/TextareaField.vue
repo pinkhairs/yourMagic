@@ -15,5 +15,6 @@ export default defineComponent({
 <style scoped>
 ion-textarea {
   --color: #000;
+  overflow: auto
 }
 </style>
