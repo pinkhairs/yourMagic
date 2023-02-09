@@ -7,9 +7,6 @@ import { IonicVue } from '@ionic/vue';
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 
-import { createAuth0 } from "@auth0/auth0-vue";
-import config from "./auth.config";
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -44,23 +41,10 @@ const getTheTimeOfDay = () => {
   }
 }
 
-// Build the URL that Auth0 should redirect back to
-const redirect_uri = `https://your-magic-cfad2e.netlify.app/callback`;
-
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(pinia);
-
-app.use(
-  createAuth0({
-    domain: "dev-140amymbq0zvj8li.us.auth0.com",
-    clientId: "fkwYscwPcJfYgyY1JyfO6h9Cj0P5a3Gt",
-    authorizationParams: {
-      redirect_uri
-    }
-  })
-);
   
 router.isReady().then(() => {
   StatusBar.setOverlaysWebView({ overlay: true })
