@@ -5,7 +5,7 @@ const storage = new Storage()
 
 export default new class {
     private userToken = '';
-    private environmentToken = process.env.JWTAPIKEY
+    private environmentToken = process.env.VUE_APP_JWTAPIKEY
 
     constructor() {
         storage.create()
@@ -20,7 +20,7 @@ export default new class {
         if (token) {
             headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
         }
-        const response = await fetch(process.env.DBURL+path, {
+        const response = await fetch(process.env.VUE_APP_BACKENDURL+path, {
             method: requestMethod,
             headers,
             body: data ? JSON.stringify(data) : null
