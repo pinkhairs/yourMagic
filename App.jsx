@@ -9,10 +9,15 @@ import CreateAccount from './app/views/CreateAccount';
 import Birthday from './app/views/Birthday';
 import Password from './app/views/Password';
 import Dashboard from './app/views/Dashboard';
-import Settings from './app/views/Settings';
 import theme from './assets/theme.json';
 import { ThemeContext } from './app/contexts/ThemeContext';
+import Button from './app/components/Button';
+import Settings from './app/views/Settings';
+import GetReading from './app/views/GetReading';
 
+const closeButton = () => <Button link="Dashboard" icon="close" type="invisible" />;
+const menuButton = () => <Button link="Settings" icon="menu" type="invisible" />;
+const backButton = () => <Button link="Settings" icon="chevron-left" type="invisible" />;
 const darkScreenOptions = {
   headerStyle: {
     backgroundColor: theme.surfaces.dark,
@@ -87,13 +92,44 @@ export default function App() {
             component={CreateAccount}
           />
           <Stack.Screen
-            options={lightScreenOptions}
+            options={{
+              headerLeft: null,
+              headerRight: menuButton,
+              ...lightScreenOptions,
+            }}
             name="Dashboard"
-            component={Settings}
+            component={Dashboard}
+          />
+          <Stack.Screen
+            options={{
+              ...lightScreenOptions,
+            }}
+            name="Get a Reading"
+            component={GetReading}
           />
           <Stack.Screen name="Set Birthday" component={Birthday} />
           <Stack.Screen name="Reset Password" component={Password} />
-          <Stack.Screen name="Hello" component={Dashboard} />
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              headerLeft: null,
+              headerRight: closeButton,
+              cardStyleInterpolator: ({ current, layouts }) => ({
+                cardStyle: {
+                  transform: [
+                    {
+                      translateY: current.progress.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [layouts.screen.height, 0],
+                      }),
+                    },
+                  ],
+                },
+              }),
+              ...lightScreenOptions,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeContext.Provider>

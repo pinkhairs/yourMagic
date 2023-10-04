@@ -13,7 +13,7 @@ export default function CreateAccount() {
       style={{ flex: 1 }}
     >
       <View style={styles.mainView}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar bartype="light-content" />
         <Heading
           lightOnDark
           addSpacing
@@ -59,7 +59,7 @@ export default function CreateAccount() {
           />
         </View>
         <View style={{ marginBottom: 16 }}>
-          <Button fullWidth link="Onboarding" style="inverse" text="Send Password Reset" />
+          <Button fullWidth link="Onboarding" type="inverse" text="Send Password Reset" />
         </View>
       </View>
     </KeyboardAvoidingView>

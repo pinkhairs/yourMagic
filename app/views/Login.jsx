@@ -12,7 +12,7 @@ export default function CreateAccount() {
       style={{ flex: 1 }}
     >
       <View style={styles.mainView}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar bartype="light-content" />
         <View style={{
           borderBottom: '1pt #F9F9EC solid', flex: 1, gap: 24, alignItems: 'center', marginTop: 16,
         }}
@@ -72,8 +72,8 @@ export default function CreateAccount() {
           />
         </View>
         <View style={{ marginBottom: 16 }}>
-          <Button link="Dashboard" style="inverse" fullWidth text="Log In" />
-          <Button link="Reset Password" style="solid" fullWidth text="Forgot Password?" />
+          <Button link="Dashboard" type="inverse" fullWidth text="Log In" />
+          <Button link="Reset Password" type="tertiary" fullWidth text="Forgot Password?" />
         </View>
       </View>
     </KeyboardAvoidingView>

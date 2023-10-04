@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
   paragraph: {
     fontFamily: 'Space Grotesk',
     fontWeight: 400,
-    fontSize: 14,
-    lineHeight: 20,
+    fontSize: 18,
+    lineHeight: 24,
     textAlign: 'center',
     color: theme.surfaces.dark,
   },
@@ -22,5 +22,5 @@ const styles = StyleSheet.create({
   },
   lightOnDark: {
     color: theme.surfaces.light,
-  }
+  },
 });

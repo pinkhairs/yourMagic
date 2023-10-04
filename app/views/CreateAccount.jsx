@@ -12,15 +12,15 @@ export default function CreateAccount() {
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <StatusBar barStyle="light-content" />
+      <StatusBar bartype="light-content" />
       <ScrollView>
         <View style={styles.mainView}>
           <View style={{ flex: 1, justifyContent: 'flex-start', marginTop: 16 }}>
-            <Heading lightOnDark addSpacing style={{ fontSize: 14, lineHeight: 20 }}>Create Account</Heading>
+            <Heading lightOnDark addSpacing style={{ fontSize: 18, lineHeight: 24 }}>Create Account</Heading>
             <Paragraph
               lightOnDark
               style={{
-                width: Dimensions.get('window').width * 0.75, marginHorizontal: 'auto', alignSelf: 'center', color: '#8A8591',
+                width: Dimensions.get('window').width * 0.88, marginHorizontal: 'auto', alignSelf: 'center', color: '#8A8591',
               }}
             >
               Create an account to access daily divinations, youpr card of the day, Tarot Bot readings, indie decks & more.
@@ -36,7 +36,7 @@ export default function CreateAccount() {
                 fontFamily: 'Space Grotesk',
                 fontStyle: 'normal',
                 fontWeight: 500,
-                fontSize: 16,
+                fontSize: 18,
                 lineHeight: 22,
                 letterSpacing: 0.2,
                 color: theme.surfaces.light,
@@ -56,7 +56,7 @@ export default function CreateAccount() {
                 fontFamily: 'Space Grotesk',
                 fontStyle: 'normal',
                 fontWeight: 500,
-                fontSize: 16,
+                fontSize: 18,
                 lineHeight: 22,
                 letterSpacing: 0.2,
                 color: theme.surfaces.light,
@@ -65,7 +65,7 @@ export default function CreateAccount() {
                 borderBottomColor: theme.surfaces.light,
                 borderWidth: 1,
                 width: Dimensions.get('window').width - 32,
-                marginTop: 16,
+                marginTop: 4,
               }}
               keyboardType="email-address"
               placeholder="Email"
@@ -78,7 +78,7 @@ export default function CreateAccount() {
                 fontFamily: 'Space Grotesk',
                 fontStyle: 'normal',
                 fontWeight: 500,
-                fontSize: 16,
+                fontSize: 18,
                 lineHeight: 22,
                 letterSpacing: 0.2,
                 color: theme.surfaces.light,
@@ -87,7 +87,7 @@ export default function CreateAccount() {
                 borderBottomColor: theme.surfaces.light,
                 borderWidth: 1,
                 width: Dimensions.get('window').width - 32,
-                marginTop: 16,
+                marginTop: 4,
                 marginBottom: 16,
               }}
               secureTextEntry
@@ -96,14 +96,15 @@ export default function CreateAccount() {
             />
           </View>
         </View>
+
       </ScrollView>
       <View style={{
         flex: 1, justifyContent: 'flex-end', marginBottom: 16, alignItems: 'center',
       }}
       >
         <View>
-          <Button link="Set Birthday" style="inverse" fullWidth text="Continue" />
-          <Button link="Login" style="solid" fullWidth text="Already have an account? Sign in here" />
+          <Button link="Set Birthday" type="inverse" fullWidth text="Continue" />
+          <Button link="Login" type="tertiary" fullWidth text="Already have an account? Sign in here" />
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -116,5 +117,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.surfaces.dark,
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingBottom: 24,
   },
 });

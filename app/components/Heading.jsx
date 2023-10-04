@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   h1: {
     fontFamily: 'Dela Gothic One',
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 38,
     lineHeight: 40,
     textAlign: 'center',
     color: theme.surfaces.dark,

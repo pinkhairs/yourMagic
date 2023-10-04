@@ -1,86 +1,119 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Dimensions, Animated } from 'react-native';
+import {
+  View, Dimensions, Animated, StyleSheet,
+} from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-const Slideshow = ({ children }) => {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  imageBackground: {
+    position: 'absolute',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  carouselItem: {
+    marginTop: 120,
+  },
+  paginationDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 8,
+    backgroundColor: 'black',
+  },
+  paginationDotContainer: {
+    marginHorizontal: 4,
+  },
+  inactivePaginationDot: {
+    backgroundColor: 'white',
+    position: 'relative',
+    top: -1.5,
+  },
+});
+
+function Slideshow({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollOffset, setScrollOffset] = useState(0);
   const carouselItems = children;
 
   const backgroundImages = [
-    require('../../assets/images/feature-bg-1.png'), 
-    require('../../assets/images/feature-bg-2.png'), 
-    require('../../assets/images/feature-bg-3.png')
+    require('../../assets/images/feature-bg-1.png'),
+    require('../../assets/images/feature-bg-3.png'),
+    require('../../assets/images/feature-bg-2.png'),
   ];
 
-  const fadeAnim = useRef(backgroundImages.map(() => new Animated.Value(0))).current;
+  const { width } = Dimensions.get('window');
+
+  const fadeAnim = useRef(
+    new Array(backgroundImages.length).fill(null).map(() => new Animated.Value(1)),
+  ).current;
 
   useEffect(() => {
-    Animated.sequence([
-      Animated.timing(fadeAnim[activeIndex], {
+    const nextIndex = Math.round(scrollOffset / width); // Calculate index based on scroll position
+
+    Animated.parallel([
+      Animated.timing(fadeAnim[nextIndex], {
         toValue: 1,
-        duration: 600,
+        duration: 22, // Short duration for quick response
         useNativeDriver: true,
       }),
-      Animated.timing(fadeAnim[(activeIndex + 1) % backgroundImages.length], {
-        toValue: 0,
-        duration: 600,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [activeIndex]);
+      ...fadeAnim.map((anim, i) => {
+        if (i !== nextIndex) {
+          return Animated.timing(anim, {
+            toValue: 0,
+            duration: 22, // Short duration for quick response
+            useNativeDriver: true,
+          });
+        }
+        return null;
+      }).filter(Boolean),
+    ]).start(() => setActiveIndex(nextIndex)); // Update the activeIndex here
+  }, [scrollOffset]);
 
-  const _renderItem = ({ item, index }) => {
-    return (
-      <Animated.View style={{ marginTop: 120, opacity: fadeAnim[index] }}>
-        {item}
-      </Animated.View>
-    );
+  const handleScroll = (event) => {
+    const newOffset = event.nativeEvent.contentOffset.x;
+    setScrollOffset(newOffset);
   };
-  
 
-  const pagination = (
-    <Pagination
-      dotsLength={carouselItems.length}
-      activeDotIndex={activeIndex}
-      dotStyle={{
-        width: 8,
-        height: 8,
-        borderRadius: 8,
-        backgroundColor: 'black'
-      }}
-      inactiveDotStyle={{
-        backgroundColor: 'white'
-      }}
-      inactiveDotScale={1}
-      inactiveDotOpacity={1}
-    />
+  const renderItem = ({ item, index }) => (
+    <Animated.View style={{ ...styles.carouselItem, opacity: fadeAnim[index] }}>
+      {item}
+    </Animated.View>
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       {backgroundImages.map((image, index) => (
-        <Animated.Image 
+        <Animated.Image
           source={image}
-          resizeMode='cover'
-          style={{ 
-            position: 'absolute',
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
-            opacity: fadeAnim[index],
-          }} 
+          resizeMode="cover"
+          style={{ ...styles.imageBackground, opacity: fadeAnim[index] }}
           key={index}
         />
       ))}
       <Carousel
-        layout={"default"}
+        enableSnap
+        layout="default"
+        decelerationRate="fast"
         data={carouselItems}
-        sliderWidth={Dimensions.get('window').width}
-        itemWidth={Dimensions.get('window').width - 32}
-        renderItem={_renderItem}
-        onSnapToItem={setActiveIndex} />
-      { pagination }
+        sliderWidth={width}
+        itemWidth={width - 32}
+        renderItem={renderItem}
+        onScroll={handleScroll}
+        scrollEventThrottle={64} // Control the scroll event frequency
+      />
+      <Pagination
+        dotsLength={carouselItems.length}
+        activeDotIndex={activeIndex}
+        dotStyle={styles.paginationDot}
+        dotContainerStyle={styles.paginationDotContainer}
+        inactiveDotStyle={styles.inactivePaginationDot}
+        inactiveDotScale={1}
+        inactiveDotOpacity={1}
+      />
     </View>
   );
-};
+}
 
 export default Slideshow;
